@@ -25,6 +25,36 @@ Esta pantalla tiene una resolucion de 84x48 pixeles, y se maneja mediante el pro
 
 ## Arquitectura del sistema 
 ### Diagrama de Bloques
+### Máquina de Estados
+
+#### Hambre
+<div>
+<p style = 'text-align:center;'>
+<img src="./Imagenes/Hambre.png" alt=imagen" width="500px">
+</p>
+</div>
+
+Entrada Botón de alimentación
+
+#### Descanso
+
+<div>
+<p style = 'text-align:center;'>
+<img src="./Imagenes/Descanso.png" alt=imagen" width="500px">
+</p>
+</div>
+
+Entrada digital del Sensor de Luz(Modulo GLS516)
+
+#### Juego
+
+<div>
+<p style = 'text-align:center;'>
+<img src="./Imagenes/Juego.png" alt=imagen" width="500px">
+</p>
+</div>
+
+
 ### Descripcion de Componenetes
 + **FPGA CYCLONE IV EP4CE10E22C8:** Producida por Intel y lanzada en el 2009, cuenta con 22000 elementos logicos y albegara toda la logica de comportamiento de la mascota virtual.
 
