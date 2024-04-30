@@ -1,14 +1,24 @@
 # Entrega 1 del proyecto WP01
 ## Introduccion
+
+---
+
 ### Objetivo
+
+---
+
 ## Descripcion General del Sistema
+
+---
+
 ## Requisitos del Sistema
 ### Sistema de Botones
 El tamagochi tendra cuatro botones o interruptores con las siguientes funcionalidades:
-+ **Boton Alimentacion:** Este es un pulsador y servira para dar alimento a la mascota virtual.
-+ **Boton Juego:** Este es un interruptor, permitira entrar al modo juego y tener otras interacciones con la mascota.
-+ **Boton Reset:** Este es un pulsador, restablece estadisticas y datos del juego.
-+ **Boton Test:** Este es un pulsador, servira para cambiar el modo de operacion de la mascota rapidamente.
+
++ **Boton Alimentacion:** Este es un ***pulsador*** y servira para dar alimento a la mascota virtual.
++ **Boton Juego:** Este es un ***interruptor***, permitira entrar al modo juego y tener otras interacciones con la mascota.
++ **Boton Reset:** Este es un ***pulsador***, restablece estadisticas y datos del juego.
++ **Boton Test:** Este es un ***pulsador***, servira para cambiar el modo de operacion de la mascota rapidamente.
 
 ### Sistema de Sensado
 Se tiene pensado usar 3 sensores, estos serviran para dar estimulos a la mascota virtual y/o mejorar la interacion jugador-maquina. Estos sensores y sus interacciones son:
@@ -108,7 +118,7 @@ Entrada digital del Sensor de Luz(Modulo GLS516)
 
   *Se usara para la pantalla nokia 5110 LCD y tambien puede usarse para algunos sensores como giroscopios o acelerometros.*
 
-+ **PWM(Pulse Width Modulation, o Modulación por Ancho de Pulso):** es una técnica utilizada en electrónica para controlar la cantidad de energía entregada a un dispositivo a través de señales digitales. Se usa para variar la potencia entregada a dispositivos como motores, luces, y otras cargas, sin tener que usar una señal analógica.
++ **PWM (Pulse Width Modulation, o Modulación por Ancho de Pulso):** es una técnica utilizada en electrónica para controlar la cantidad de energía entregada a un dispositivo a través de señales digitales. Se usa para variar la potencia entregada a dispositivos como motores, luces, y otras cargas, sin tener que usar una señal analógica.
 
   *Se usara para el sensor de ultrasonido*
 
@@ -116,6 +126,9 @@ Entrada digital del Sensor de Luz(Modulo GLS516)
 
 ## Especificaciones de Diseño Detalladas
 ### Modos de Operacion
+
+Los modos de operación se trata de un conjunto de instrucciones que puede ejecutar una aplicación. El conjunto de instrucciones que se pueden ejecutar según el que modo escoja el usuario por, lo mismo es el modo o meoto de operacción utilizado ya que representa una diferencia entre cada uno de los metodos posibles.
+
 + **Modo Test:** permite a los usuarios y desarrolladores validar la funcionalidad del sistema y sus estados sin necesidad de seguir el flujo de operación normal. En este modo, se pueden forzar transiciones de estado específicas mediante interacciones simplificadas, como pulsaciones cortas de botones, para verificar las respuestas del sistema y la visualización. Este modo es esencial durante la fase de desarrollo para pruebas rápidas y efectivas de nuevas características o para diagnóstico de problemas.
 
   + **Activacion:** Se ingresa al modo Test manteniendo pulsado el botón "Test" por un periodo de 5 segundos.
