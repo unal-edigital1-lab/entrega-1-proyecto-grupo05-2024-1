@@ -1,15 +1,27 @@
 # Entrega 1 del proyecto WP01
 ## Introduccion
 
----
+En el ámbito de la electrónica digital, la integración de sensores y pantallas a través de Field-Programmable Gate Arrays (FPGAs) ofrece un vasto potencial para desarrollar aplicaciones innovadoras y educativas. Este proyecto tiene como objetivo diseñar y construir un dispositivo Tamagotchi utilizando una FPGA como plataforma principal de desarrollo.
+
+El Tamagotchi es un icónico juguete virtual que simula el cuidado de una mascota digital. Su popularidad en los años 90 despertó el interés en la interacción entre dispositivos electrónicos y usuarios, ofreciendo una experiencia lúdica y educativa. En este proyecto, se busca replicar esta experiencia utilizando tecnología moderna y componentes electrónicos avanzados.
 
 ### Objetivo
 
----
+ * Diseño e Implementación en FPGA: Utilizar una FPGA para diseñar e implementar la lógica del Tamagotchi. La FPGA permitirá la flexibilidad y personalización necesaria para gestionar la interacción entre los diversos componentes.
+
+ * Integración de Sensores: Incorporar diversos sensores (por ejemplo, temperatura, luz, ultrasonido) para simular las condiciones ambientales y las necesidades del Tamagotchi. Estos sensores permitirán crear una experiencia de usuario más realista y dinámica.
+
+ * Interfaz de Usuario mediante Pantalla: Utilizar una pantalla gráfica para mostrar el estado del Tamagotchi, sus necesidades y sus acciones. La pantalla servirá como medio de comunicación entre el usuario y la mascota digital.
+
+ * Programación y Simulación: Desarrollar y probar el código VHDL/Verilog necesario para que la FPGA gestione las interacciones entre los sensores y la pantalla. Realizar simulaciones para asegurar el correcto funcionamiento antes de la implementación física.
 
 ## Descripcion General del Sistema
 
----
+El desarrollo de un Tamagotchi utilizando una FPGA no solo es un ejercicio técnico avanzado, sino también una oportunidad para aplicar conocimientos teóricos en un contexto práctico y lúdico. La combinación de sensores y pantallas a través de una FPGA ilustra cómo estos componentes pueden integrarse para crear sistemas electrónicos complejos y funcionales. 
+
+El alcance de este proyecto incluye el diseño, implementación y prueba de un prototipo funcional de Tamagotchi en una FPGA. Las limitaciones pueden incluir restricciones en los recursos de hardware disponibles, como la cantidad de puertas lógicas en la FPGA, la resolución de la pantalla y la precisión de los sensores utilizados.
+
+Tendra como entradas 4 sensores que indicaran la temperatura, humedad, luz y el sensor de ultrasonido, ademas de botones e interruptores, todo para crear estimulos y ambientes necesarios para que se realizen cambios en el tamagotchi.
 
 ## Requisitos del Sistema
 ### Sistema de Botones
@@ -100,11 +112,27 @@ Entrada digital del Sensor de Luz(Modulo GLS516)
 </p>
 </div>
 
+ + **Sensor de Temperatura y Humedad(DHT11):** El DHT11 es un sensor básico, de bajo costo y popular que se utiliza para medir la temperatura y la humedad del entorno. Es ampliamente utilizado en proyectos de electrónica y sistemas embebidos debido a su simplicidad y facilidad de uso. Puede medir temperaturas en un rango de 0 a 50 grados Celsius, con una precisión de ±2 grados Celsius y puede medir la humedad relativa en un rango de 20% a 90%, con una precisión de ±5%.
+
+<div>
+<p style = 'text-align:center;'>
+<img src="./Imagenes/dht11.jpeg" alt=imagen" width="200px">
+</p>
+</div>
+
 + **Sensor de Luz(Modulo GLS516):** Es un sensor fotoeléctrico que utiliza una célula fotosensible para detectar la intensidad de la luz. Convierte la luz ambiental en una señal eléctrica, permitiendo así medir la intensidad luminosa.
 
 <div>
 <p style = 'text-align:center;'>
 <img src="./Imagenes/Módulo-Sensor-De-Luz-Ldr-SENL-1.webp" alt=imagen" width="200px">
+</p>
+</div>
+
+ + **Sensor de Humedad(Modulo GLS516):** El GLS516 es un módulo sensor de humedad utilizado para medir la humedad del suelo. Este tipo de sensor es especialmente útil en aplicaciones de agricultura y jardinería, donde es crucial monitorear y controlar el nivel de humedad del suelo para asegurar el crecimiento saludable de las plantas. Este módulo puede proporcionar tanto una salida analógica como una salida digital. La salida analógica da un valor de voltaje proporcional al nivel de humedad, mientras que la salida digital puede ser configurada para indicar un umbral específico de humedad.
+
+<div>
+<p style = 'text-align:center;'>
+<img src="./Imagenes/humedad.webp" alt=imagen" width="200px">
 </p>
 </div>
 
@@ -172,8 +200,43 @@ La mascota virtual tiene diferentes estados dependiendo de sus estimulos o el ti
   + **Sensor de Temperatura:** Si detecta una temperatura debajo del limite inferior o por encima del limite superior se vera afectada negativamente la barra de salud.
   + **Pulsador de Alimentacion:** Cada vez que se pulse aumentara en 1 la barra de alimentacion de la mascota virtual, hasta un maximo de 8.
 
+### Interfaz de usuario:
++ **Mascota Virtual:**
+
+<div>
+<p style = 'text-align:center;'>
+<img src="./Imagenes/Gato.png" alt=imagen" width="200px">
+</p>
+</div>
+
++ **Indicadores de interacciones:** Relaciona cada estadistica del tamagutchi
 
 
 
-
+  + **Nivel de alimento:** 
+  <div>
+  <p style = 'text-align:center;'>
+  <img src="./Imagenes/caramelo.jpeg" alt=imagen" width="200px">
+  </p>
+  </div>
       
+  + **Nivel de Sueño:**
+  <div>
+  <p style = 'text-align:center;'>
+  <img src="./Imagenes/luna.png" alt=imagen" width="200px">
+  </p>
+  </div>
+
+  + **Nivel de Amistad:**
+  <div>
+  <p style = 'text-align:center;'>
+  <img src="./Imagenes/juego.jpeg" alt=imagen" width="200px">
+  </p>
+  </div>
+
+  + **Nivel de Salud:**
+  <div>
+  <p style = 'text-align:center;'>
+  <img src="./Imagenes/salud.jpeg" alt=imagen" width="200px">
+  </p>
+  </div>
