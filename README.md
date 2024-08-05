@@ -47,6 +47,37 @@ Esta pantalla tiene una resolucion de 84x48 pixeles, y se maneja mediante el pro
 
 ## Arquitectura del sistema 
 ### Diagrama de Bloques
+
+<div>
+<p style = 'text-align:center;'>
+<img src="./Imagenes/D_caja_negra.jpg" alt=imagen" width="200px">
+</p>
+</div>
+
+<div>
+<p style = 'text-align:center;'>
+<img src="./Imagenes/CAM 1.png" alt=imagen" width="200px">
+</p>
+</div>
+
+<div>
+<p style = 'text-align:center;'>
+<img src="./Imagenes/CAM_2.png" alt=imagen" width="200px">
+</p>
+</div>
+
+<div>
+<p style = 'text-align:center;'>
+<img src="./Imagenes/CAM_3.png" alt=imagen" width="200px">
+</p>
+</div>
+
+<div>
+<p style = 'text-align:center;'>
+<img src="./Imagenes/CAM_4.png" alt=imagen" width="200px">
+</p>
+</div>
+
 ### Máquina de Estados General
 
 <div>
@@ -99,6 +130,8 @@ Esta pantalla tiene una resolucion de 84x48 pixeles, y se maneja mediante el pro
 <img src="./Imagenes/dht11.jpeg" alt=imagen" width="200px">
 </p>
 </div>
+
+
 
 + **Sensor de Luz(Modulo GLS516):** Es un sensor fotoeléctrico que utiliza una célula fotosensible para detectar la intensidad de la luz. Convierte la luz ambiental en una señal eléctrica, permitiendo así medir la intensidad luminosa.
 
