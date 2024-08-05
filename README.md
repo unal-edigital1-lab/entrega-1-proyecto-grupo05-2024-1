@@ -28,9 +28,9 @@ Tendra como entradas 4 sensores que indicaran la temperatura, humedad, luz y el 
 El tamagochi tendra cuatro botones o interruptores con las siguientes funcionalidades:
 
 + **Boton Alimentacion:** Este es un ***pulsador*** y servira para dar alimento a la mascota virtual.
-+ **Boton Juego:** Este es un ***interruptor***, permitira entrar al modo juego y tener otras interacciones con la mascota.
++ **Interruptor de modo:** Este es un ***interruptor***, permitira entrar al modo juego y tener otras interacciones con la mascota.
 + **Boton Reset:** Este es un ***pulsador***, restablece estadisticas y datos del juego.
-+ **Boton Test:** Este es un ***pulsador***, servira para cambiar el modo de operacion de la mascota rapidamente.
++ **Boton Descanso:** Este es un ***pulsador***, servira para cambiar el estado de la mascopara para poder descansar.
 
 ### Sistema de Sensado
 Se tiene pensado usar 3 sensores, estos serviran para dar estimulos a la mascota virtual y/o mejorar la interacion jugador-maquina. Estos sensores y sus interacciones son:
