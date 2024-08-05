@@ -47,34 +47,14 @@ Esta pantalla tiene una resolucion de 84x48 pixeles, y se maneja mediante el pro
 
 ## Arquitectura del sistema 
 ### Diagrama de Bloques
-### Máquina de Estados
-
-#### Hambre
-<div>
-<p style = 'text-align:center;'>
-<img src="./Imagenes/Hambre.png" alt=imagen" width="500px">
-</p>
-</div>
-
-Entrada Botón de alimentación
-
-#### Descanso
+### Máquina de Estados General
 
 <div>
 <p style = 'text-align:center;'>
-<img src="./Imagenes/Descanso.png" alt=imagen" width="500px">
+<img src="./Imagenes/maquinaDeEstadoGeneral.png" alt=imagen" width="500px">
 </p>
 </div>
 
-Entrada digital del Sensor de Luz(Modulo GLS516)
-
-#### Juego
-
-<div>
-<p style = 'text-align:center;'>
-<img src="./Imagenes/Juego.png" alt=imagen" width="500px">
-</p>
-</div>
 
 
 ### Descripcion de Componenetes
