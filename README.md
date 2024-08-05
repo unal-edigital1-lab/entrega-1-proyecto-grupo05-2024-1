@@ -50,31 +50,31 @@ Esta pantalla tiene una resolucion de 84x48 pixeles, y se maneja mediante el pro
 
 <div>
 <p style = 'text-align:center;'>
-<img src="./Imagenes/D_caja_negra.jpg" alt=imagen" width="200px">
+<img src="./Imagenes/D_caja_negra.jpg" alt=imagen" width="1000px">
 </p>
 </div>
 
 <div>
 <p style = 'text-align:center;'>
-<img src="./Imagenes/CAM_1.jpg" alt=imagen" width="200px">
+<img src="./Imagenes/CAM_1.jpg" alt=imagen" width="1000px">
 </p>
 </div>
 
 <div>
 <p style = 'text-align:center;'>
-<img src="./Imagenes/CAM_2.jpg" alt=imagen" width="200px">
+<img src="./Imagenes/CAM_2.jpg" alt=imagen" width="1000px">
 </p>
 </div>
 
 <div>
 <p style = 'text-align:center;'>
-<img src="./Imagenes/CAM_3.jpg" alt=imagen" width="200px">
+<img src="./Imagenes/CAM_3.jpg" alt=imagen" width="1000px">
 </p>
 </div>
 
 <div>
 <p style = 'text-align:center;'>
-<img src="./Imagenes/CAM_4.jpg" alt=imagen" width="200px">
+<img src="./Imagenes/CAM_4.jpg" alt=imagen" width="1000px">
 </p>
 </div>
 
