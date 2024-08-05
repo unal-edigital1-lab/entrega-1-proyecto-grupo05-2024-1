@@ -48,7 +48,7 @@ Se tiene pensado usar 3 sensores, estos serviran para dar estimulos a la mascota
 Esta pantalla tiene una resolucion de 84x48 pixeles, y se maneja mediante el protocolo de comunicacion SPI. En ella se visualizara la mascota virtual y los niveles de las diferentes estadisticas, para ello se dividira la pantalla en 2 viendose la mascota al lado izquierdo y los niveles en el lado derecho, ademas tambien se desea incluir la temperatura en la esquina superior derecha.
 
 ## Arquitectura del sistema 
-### Diagrama de Bloques
+### Diagrama de caja negra
 
 <div>
 <p style = 'text-align:center;'>
