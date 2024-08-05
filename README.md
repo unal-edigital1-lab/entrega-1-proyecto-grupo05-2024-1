@@ -39,9 +39,9 @@ Se tiene pensado usar 3 sensores, estos serviran para dar estimulos a la mascota
 
 + **Sensor de Temperatura(ds18b20):** Este sensor permite por medio de una señal de 8 bits conocer la temperatura, tiene un rango de operacion de -55 a 125 grados centigrados. Para este se definiran 2 limites de temperatura, si se pasa el limite inferior el tamagochi sufrira efectos de frio, de igual manera si sobrepasa el limite superior sufrira de calor.
 
-+ **Sensor de Luz(Modulo GLS516):** Este modulo tiene una fotoresistencia y es capaz de entregar una salida digital de un bit para iluminacion, en este proyecto se usara como interruptor interviniendo en los ciclos de descanso de la mascota virtual.
++ **Sensor de Luz(Modulo LDR SENL):** Este modulo tiene una fotoresistencia y es capaz de entregar una salida digital de un bit para iluminacion, en este proyecto se usara como interruptor interviniendo en los ciclos de descanso de la mascota virtual.
 
-+ **Sensor de Humedad(Modulo GLS516):** Funciona al igual que el sensor de ilumincaion, este se usara para la interaccion del baño de la mascota. 
++ **Sensor de Humedad(Modulo HD-38):** Funciona al igual que el sensor de ilumincaion, este se usara para la interaccion del baño de la mascota. 
 
 ### Sistema de Visualizacion
 #### Nokia 5110
