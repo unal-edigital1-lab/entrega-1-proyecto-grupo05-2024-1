@@ -214,6 +214,7 @@ La mascota virtual tiene diferentes estados dependiendo de sus estimulos o el ti
   + **Sensor de Luz:** Sirve como interruptor, al detectar o no iluminacion. Si no detecta luz la mascota entrara en estado de sueño, si no estara en despierto permanentemente.
   + **Sensor de Temperatura:** Si detecta una temperatura debajo del limite inferior o por encima del limite superior se vera afectada negativamente la barra de salud.
   + **Pulsador de Alimentacion:** Cada vez que se pulse aumentara en 1 la barra de alimentacion de la mascota virtual, hasta un maximo de 8.
+  + **Sensor de Humedad:** Se tomara la interaccion de bañarse cuando el sensor se introduzca en agua, esto solo se podra en modo juego.
 
 ### Interfaz de usuario:
 + **Mascota Virtual:**
