@@ -56,25 +56,25 @@ Esta pantalla tiene una resolucion de 84x48 pixeles, y se maneja mediante el pro
 
 <div>
 <p style = 'text-align:center;'>
-<img src="./Imagenes/CAM 1.png" alt=imagen" width="200px">
+<img src="./Imagenes/CAM_1.jpg" alt=imagen" width="200px">
 </p>
 </div>
 
 <div>
 <p style = 'text-align:center;'>
-<img src="./Imagenes/CAM_2.png" alt=imagen" width="200px">
+<img src="./Imagenes/CAM_2.jpg" alt=imagen" width="200px">
 </p>
 </div>
 
 <div>
 <p style = 'text-align:center;'>
-<img src="./Imagenes/CAM_3.png" alt=imagen" width="200px">
+<img src="./Imagenes/CAM_3.jpg" alt=imagen" width="200px">
 </p>
 </div>
 
 <div>
 <p style = 'text-align:center;'>
-<img src="./Imagenes/CAM_4.png" alt=imagen" width="200px">
+<img src="./Imagenes/CAM_4.jpg" alt=imagen" width="200px">
 </p>
 </div>
 
