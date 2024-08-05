@@ -41,6 +41,8 @@ Se tiene pensado usar 3 sensores, estos serviran para dar estimulos a la mascota
 
 + **Sensor de Luz(Modulo GLS516):** Este modulo tiene una fotoresistencia y es capaz de entregar una salida digital de un bit para iluminacion, en este proyecto se usara como interruptor interviniendo en los ciclos de descanso de la mascota virtual.
 
++ **Sensor de Humedad(Modulo GLS516):** Funciona al igual que el sensor de ilumincaion, este se usara para la interaccion del baño de la mascota. 
+
 ### Sistema de Visualizacion
 #### Nokia 5110
 Esta pantalla tiene una resolucion de 84x48 pixeles, y se maneja mediante el protocolo de comunicacion SPI. En ella se visualizara la mascota virtual y los niveles de las diferentes estadisticas, para ello se dividira la pantalla en 2 viendose la mascota al lado izquierdo y los niveles en el lado derecho, ademas tambien se desea incluir la temperatura en la esquina superior derecha.
