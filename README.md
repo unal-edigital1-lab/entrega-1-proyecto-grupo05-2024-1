@@ -103,7 +103,7 @@ Es un dispositivo de visualización que permite mostrar hasta 20 caracteres por 
 
 <div>
 <p style = 'text-align:center;'>
-<img src="./Imagenes/Nokia-5110-LCD-Pinout.png" alt=imagen" width="200px">
+<img src="./Imagenes/20x4.jpg" alt=imagen" width="200px">
 </p>
 </div>
 
@@ -178,7 +178,7 @@ Los modos de operación se trata de un conjunto de instrucciones que puede ejecu
 
   + **Activacion:** La mascota virtual por defecto va a estar en este modo, o si esta en modo test para volver a este hay que desactivar el interruptor de test.
 
-  + **Funcionalidad:** La mascota va a responder a multiples estimulos provenientes de los botones, y los sensores, estos estimulos ademas del paso del tiempo haran que cambie de estados siendo estos feliz, neutro, hambriento, descanso, enfermo y un estado extremo que es muerto. 
+  + **Funcionalidad:** La mascota va a responder a multiples estimulos provenientes de los botones, y los sensores, estos estimulos ademas del paso del tiempo haran que cambie de estados siendo estos feliz, neutro, hambriento, descanso, enfermo y un estado extremo que es muerto, ademas del modo test.
 
 ### Estados y Transiciones:
 #### Estados
@@ -214,42 +214,44 @@ Si cualquiera de estas estadisticas llega al nivel minimo la mascota entrara al 
   + **Sensor de Humedad:** Se tomara la interaccion de bañarse cuando el sensor se introduzca en agua, esto solo se podra en modo juego.
 
 ### Interfaz de usuario:
-+ **Mascota Virtual:**
-
++ **Feliz:**
 <div>
 <p style = 'text-align:center;'>
-<img src="./Imagenes/Gato.png" alt=imagen" width="200px">
+<img src="./Imagenes/feliz.png" alt=imagen" width="200px">
 </p>
 </div>
 
-+ **Indicadores de interacciones:** Relaciona cada estadistica del tamagutchi
-
-
-
-  + **Nivel de alimento:** 
-  <div>
-  <p style = 'text-align:center;'>
-  <img src="./Imagenes/caramelo.jpeg" alt=imagen" width="200px">
-  </p>
-  </div>
++ **Neutro:** 
+<div>
+<p style = 'text-align:center;'>
+<img src="./Imagenes/Neutro.png" alt=imagen" width="200px">
+</p>
+</div>
       
-  + **Nivel de Sueño:**
-  <div>
-  <p style = 'text-align:center;'>
-  <img src="./Imagenes/luna.png" alt=imagen" width="200px">
-  </p>
-  </div>
++ **Hambriento:**
+<div>
+<p style = 'text-align:center;'>
+<img src="./Imagenes/Hambriento.png" alt=imagen" width="200px">
+</p>
+</div>
 
-  + **Nivel de Amistad:**
-  <div>
-  <p style = 'text-align:center;'>
-  <img src="./Imagenes/juego.jpeg" alt=imagen" width="200px">
-  </p>
-  </div>
++ **Descanso:**
+<div>
+<p style = 'text-align:center;'>
+<img src="./Imagenes/Descans.png" alt=imagen" width="200px">
+</p>
+</div>
 
-  + **Nivel de Salud:**
-  <div>
-  <p style = 'text-align:center;'>
-  <img src="./Imagenes/salud.jpeg" alt=imagen" width="200px">
-  </p>
-  </div>
++ **Muerto:**
+<div>
+<p style = 'text-align:center;'>
+<img src="./Imagenes/muerto.png" alt=imagen" width="200px">
+</p>
+</div>
+
++ **Amistad:**
+<div>
+<p style = 'text-align:center;'>
+<img src="./Imagenes/Amistad.png" alt=imagen" width="200px">
+</p>
+</div>
