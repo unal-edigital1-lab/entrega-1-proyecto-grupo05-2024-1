@@ -30,7 +30,7 @@ El tamagochi tendra cuatro botones o interruptores con las siguientes funcionali
 + **Boton Alimentacion:** Este es un ***pulsador*** y servira para dar alimento a la mascota virtual.
 + **Interruptor de modo:** Este es un ***interruptor***, permitira entrar al modo juego y tener otras interacciones con la mascota.
 + **Boton Reset:** Este es un ***pulsador***, restablece estadisticas y datos del juego.
-+ **Boton Test:** Este es un ***pulsador***, servira para cambiar los estados de la mascota y poder observar todas las funciones.
++ **Boton Test:** Este es un ***interruptor***, servira para cambiar los estados de la mascota y poder observar todas las funciones.
 
 ### Sistema de Sensado
 Se usaron 4 sensores, estos sirven para dar estimulos a la mascota virtual y/o mejorar la interacion jugador-maquina. Estos sensores y sus interacciones son:
@@ -84,7 +84,7 @@ Es un dispositivo de visualización que permite mostrar hasta 20 caracteres por 
 
 <div>
 <p style = 'text-align:center;'>
-<img src="./Imagenes/maquinaDeEstadoGeneral.png" alt=imagen" width="500px">
+<img src="./Imagenes/maquinaEstadosFinal.png" alt=imagen" width="500px">
 </p>
 </div>
 
@@ -165,6 +165,22 @@ Es un dispositivo de visualización que permite mostrar hasta 20 caracteres por 
 + **1-WIRE:** es un protocolo de comunicación bidireccional que utiliza solo una línea para datos y alimentación, además de un segundo hilo para tierra. Esto permite reducir la cantidad de cables necesarios para conectar dispositivos. El protocolo está basado en un modelo maestro-esclavo, donde un dispositivo actúa como maestro y puede controlar varios esclavos. El maestro inicia la comunicación y controla el flujo de datos. Los esclavos responden a las instrucciones del maestro. Cada dispositivo 1-Wire tiene una dirección única de 64 bits, lo que permite identificarlo y distinguirlo de otros dispositivos en la misma línea. Esto es útil para aplicaciones con múltiples dispositivos en un solo bus. La comunicación se realiza a través de secuencias de bits, donde un pulso corto o largo define un bit de datos. Esto se logra mediante cambios en la tensión de la línea de datos.
 
 ## Especificaciones de Diseño Detalladas
+### Funcionamiento del sensor de distancia ultrasónico HC-SR04
+
+Todo comienza cuando el pin del disparador se establece en ALTO durante 10 µs. En respuesta, el sensor transmite una ráfaga ultrasónica de ocho pulsos a 40 kHz. Este patrón de 8 pulsos está especialmente diseñado para que el receptor pueda distinguir los pulsos transmitidos del ruido ultrasónico ambiental.
+
+Estos ocho pulsos ultrasónicos viajan por el aire alejándose del transmisor. Mientras tanto, el pin de eco pasa a ALTO para iniciar la señal de eco.
+
+Si esos pulsos no se reflejan, la señal de eco se agota y baja después de 38 ms (38 milisegundos). Por lo tanto, un pulso de 38 ms indica que no hay obstrucción dentro del rango del sensor.
+
+<div>
+<p style = 'text-align:center;'>
+<img src="./Imagenes/maquinaEstadosFinal.png" alt=imagen" width="500px">
+</p>
+</div>
+
+
+
 ### Modos de Operacion
 
 Los modos de operación se trata de un conjunto de instrucciones que puede ejecutar una aplicación. El conjunto de instrucciones que se pueden ejecutar según el que modo escoja el usuario por, lo mismo es el modo o meoto de operacción utilizado ya que representa una diferencia entre cada uno de los metodos posibles.
