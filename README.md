@@ -56,19 +56,19 @@ Es un dispositivo de visualización que permite mostrar hasta 20 caracteres por 
 </p>
 </div>
 
-<!--<div>
+<div>
 <p style = 'text-align:center;'>
-<img src="./Imagenes/CAM_1.jpg" alt=imagen" width="1000px">
+<img src="./Imagenes/cajaNegrasignal.jpeg" alt=imagen" width="1000px">
 </p>
 </div>
 
 <div>
 <p style = 'text-align:center;'>
-<img src="./Imagenes/CAM_2.jpg" alt=imagen" width="1000px">
+<img src="./Imagenes/sensorsignal_image.jpeg" alt=imagen" width="1000px">
 </p>
 </div>
 
-### Máquina de Estados General
+<!--### Máquina de Estados General
 
 <div>
 <p style = 'text-align:center;'>
