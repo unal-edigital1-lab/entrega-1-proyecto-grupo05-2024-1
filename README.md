@@ -58,7 +58,7 @@ Es un dispositivo de visualización que permite mostrar hasta 20 caracteres por 
 
 <div>
 <p style = 'text-align:center;'>
-<img src="./Blank board(4).png" alt=imagen" width="1000px">
+<img src="./Blank board (4).png" alt=imagen" width="1000px">
 </p>
 </div>
 
