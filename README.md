@@ -218,6 +218,9 @@ Si cualquiera de estas estadisticas llega al nivel minimo la mascota entrara al 
   + **Sensor de Humedad:** Se tomara la interaccion de bañarse cuando el sensor se introduzca en agua, esto solo se podra en modo juego.
 
 ### Interfaz de usuario:
+
+La interfaz de ususario se tiene 3 partes, primero esta la impreción de la información presentada por los sensores, tanto los sensores ON/OFF, como de los sensores numericos, o con información completa, primero se presenta la existencia de **Luz**, luego la de **humedad total** en el hambiente, si existe una **distancia** cerca a al sensor ultrasonido, y luego los valores e temperatura y humedad del ambiente.
+
 + **Feliz:**
 <div>
 <p style = 'text-align:center;'>
@@ -225,10 +228,26 @@ Si cualquiera de estas estadisticas llega al nivel minimo la mascota entrara al 
 </p>
 </div>
 
+Podemos notar la animación realizada para la cara feliz, y su correspondiente imagen en la LCD, donde se pude notar el cuerpo de la mascota junto con la presentación de información tanto en el 7 segmentos como en la pantalla:
+
+<div>
+<p style = 'text-align:center;'>
+<img src="./Imagenes/feliz.jpg" alt=imagen" width="600px">
+</p>
+</div>
+
 + **Neutro:** 
 <div>
 <p style = 'text-align:center;'>
 <img src="./Imagenes/Neutro.png" alt=imagen" width="200px">
+</p>
+</div>
+
+En el 7 segmetos se puede leer el estado actual en el que se encuentra la mascota, ademas igual que la LCD, tambien se pueden notar las condicones de estado, en **A**,**H**,**D**, se puede ver los niveles de Amistad, Hambre y Descanos, los cuales nos permiten determinar el estado actual. Estos niveles disminuyen en un tiempo determinado y se actan mutuamente, tal como se indica en la amquina de estado. por lo que podemos notar su valor en un rando de 0 a 5.
+
+<div>
+<p style = 'text-align:center;'>
+<img src="./Imagenes/neutro.jpg" alt=imagen" width="600px">
 </p>
 </div>
       
@@ -239,10 +258,26 @@ Si cualquiera de estas estadisticas llega al nivel minimo la mascota entrara al 
 </p>
 </div>
 
+Igualmente se analiza la condición de **FRIO**, donde se pude visualizar una situación especial del ambiente en el que se encuentra la mascota, si esta en un ambiente donde la temperatura es menor a **15 °C** esta condción se acctiva, cambiando los tiempos de medición, para que sean menores, los que afecta a los nieveles y en consecuencia el cambio de estados.
+
+<div>
+<p style = 'text-align:center;'>
+<img src="./Imagenes/hambre.jpg" alt=imagen" width="600px">
+</p>
+</div>
+
 + **Descanso:**
 <div>
 <p style = 'text-align:center;'>
 <img src="./Imagenes/Descans.png" alt=imagen" width="200px">
+</p>
+</div>
+
+Cuando se encuentra en descanso, los niveles de hambre disminuyen en un tiempo distinto, y no se ve afectando el nivel de amistad, a la par que aumenta el nivel de **Descanso**, lo que permite manetener la salud de la mascota.
+
+<div>
+<p style = 'text-align:center;'>
+<img src="./Imagenes/descanso.jpg" alt=imagen" width="600px">
 </p>
 </div>
 
@@ -253,9 +288,23 @@ Si cualquiera de estas estadisticas llega al nivel minimo la mascota entrara al 
 </p>
 </div>
 
+<div>
+<p style = 'text-align:center;'>
+<img src="./Imagenes/muerto.jpg" alt=imagen" width="600px">
+</p>
+</div>
+
 + **Amistad:**
 <div>
 <p style = 'text-align:center;'>
 <img src="./Imagenes/Amistad.png" alt=imagen" width="200px">
+</p>
+</div>
+
+La condición de juegos inicia, cuando se activa el modo juego, esta condicón permite aumentar el valor de cierto niveles en la mascota, como el nivel de **Amistad**, por lo que nos permite jugar con el, a la par de mantenerlo en el mejor estado posible.
+
+<div>
+<p style = 'text-align:center;'>
+<img src="./Imagenes/amistad.jpg" alt=imagen" width="600px">
 </p>
 </div>
