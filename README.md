@@ -1,4 +1,4 @@
-# Entrega 1 del proyecto WP01
+# Entrega Proyecto diseño mascota TAMAGOTCHI - Grupo 5
 ## Introduccion
 
 En el ámbito de la electrónica digital, la integración de sensores y pantallas a través de Field-Programmable Gate Arrays (FPGAs) ofrece un vasto potencial para desarrollar aplicaciones innovadoras y educativas. Este proyecto tiene como objetivo diseñar y construir un dispositivo Tamagotchi utilizando una FPGA como plataforma principal de desarrollo.
@@ -167,6 +167,21 @@ Si esos pulsos no se reflejan, la señal de eco se agota y baja después de 38 m
 </p>
 </div>
 
+### Funcionamiento del sensor de temperatura DHT-11
+
+El condigo de funcionamiento de este sensor esta en el codigo **dht.v** aqui se encuentra el modulo **dht**, el cual nos pemrite manera el sensor de temperatura y humedad numerico, podemos notar de manera genral que como entradas para el sensor tenemos el reloj *clk*, el reset *rst*, y el pin de de comunicación del sensor, el cual funciona como entrada y salida, por lo que es un inout *dht11*, estas 3 entradas nos permiten enviar la configuración del sensor como condición inicial, y luego recibir el bus de datos, que contiene la información obtenida por el sensor:
+
+De forma resumida lo presentado en la grafica, es el funcionamiento general del sensor, se tiene variable como *timer* para el divisor de frecuencia, variables de control para el inout, un analisis de estado y receptores de información, para poder recibir el bus de 40 bits que entrega el sensor, y luego asignar a anuevas variables que guardan el valor obteneido de temeperatura y humedad.
+
+<div>
+<p style = 'text-align:center;'>
+<img src="./Imagenes/tem_hum.png" alt=imagen" width="800px">
+</p>
+</div>
+
+Lo primero que se hace es inicializar el estado en ENABLE, para, configurar una esperar para incializar que en este caso es de medio segundo, o 500 milisegundos, por lo que se tomara una medida cada medio segundo, luego el sensor pasa a modo entrada para iniciar, condicion que mantiene por 18 ms. Luego se mantiene se cambia a modo salida, y se manda un estado de bajo, por 18 ms, luego el pin se cambia a un estado alto, donde permanece por un total de 80 $\mu s$, luego continua el estado bajo por un total de 40 $\mu s$ para comenzar con la lectura de la información. Dicha lectura la realiza segun el timpo en que permanezaca un estado alto correspondeinte, espera peridos de 78 $\mu s$, y luego dependiendo del valor de inout, guarda esa infromación en un banco registro de un total de 40 bits, de esta manera obteneido la información de temeratura actual. La cual luego es empleada.
+
+### Funcionamiento de la pantalla LCD 20x4
 
 
 ### Modos de Operacion

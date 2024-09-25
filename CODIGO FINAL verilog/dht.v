@@ -90,7 +90,7 @@ module dht (
                         timer <= 0;
 								//$display("ENTRADA BAJA");
                         state <= WAIT_RESPONSE_LOW;
-                        dht11_out <= 1; // Mantener la línea baja
+                        dht11_out <= 1; // Se cambia a linea alta
                     end
                 end
                 WAIT_RESPONSE_HIGH: begin
