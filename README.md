@@ -68,13 +68,13 @@ Es un dispositivo de visualización que permite mostrar hasta 20 caracteres por 
 </p>
 </div>
 
-<!--### Máquina de Estados General
+### Máquina de Estados General
 
 <div>
 <p style = 'text-align:center;'>
 <img src="./Imagenes/maquinaEstadosFinal.png" alt=imagen" width="500px">
 </p>
-</div> -->
+</div> 
 
 
 
@@ -163,7 +163,7 @@ Si esos pulsos no se reflejan, la señal de eco se agota y baja después de 38 m
 
 <div>
 <p style = 'text-align:center;'>
-<img src="./Imagenes/maquinaEstadosFinal.png" alt=imagen" width="500px">
+<img src="./Imagenes/ondaUltra.jpeg" alt=imagen" width="500px">
 </p>
 </div>
 
