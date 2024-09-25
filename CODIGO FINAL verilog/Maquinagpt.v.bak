@@ -1,0 +1,84 @@
+module maquina_de_estados (
+    input logic clk,       // Reloj
+    input logic reset,     // Reset
+    input logic [2:0] A,   // Entrada A (3 bits)
+    input logic [2:0] H,   // Entrada H (3 bits)
+    input logic [2:0] D,   // Entrada D (3 bits)
+    input logic L,         // Entrada L (1 bit)
+    input logic MJ,        // Entrada MJ (1 bit)
+    output logic [2:0] estado_actual // Salida del estado actual
+);
+
+    // Definición de los estados
+    parameter FELIZ      = 3'b000,
+        NEUTRO     = 3'b001,
+        HAMBRIENTO = 3'b010,
+        DESCANSO   = 3'b011,
+        MUERTO     = 3'b100,
+        AMISTAD    = 3'b101
+
+    // Lógica de transición de estados
+    always_ff @(posedge clk or posedge reset) begin
+        if (reset) begin
+            estado <= NEUTRO;  // Estado inicial
+        end else begin
+            estado <= estado_proximo;
+        end
+    end
+
+    // Lógica combinacional para determinar el próximo estado
+    always_comb begin
+        case (estado)
+            FELIZ: begin
+                if (A == 3 && H == 4 && D < 5)
+                    estado_proximo = FELIZ;
+                else if (A < 4 && D == 4 && MJ == 0)
+                    estado_proximo = NEUTRO;
+                else
+                    estado_proximo = FELIZ; // Mantener estado
+            end
+            NEUTRO: begin
+                if (H < 4 && A > 3)
+                    estado_proximo = HAMBRIENTO;
+                else if (D == 4 && L == 1)
+                    estado_proximo = DESCANSO;
+                else
+                    estado_proximo = NEUTRO; // Mantener estado
+            end
+            HAMBRIENTO: begin
+                if (D < 4)
+                    estado_proximo = DESCANSO;
+                else if (H == 0)
+                    estado_proximo = MUERTO;
+                else
+                    estado_proximo = HAMBRIENTO; // Mantener estado
+            end
+            DESCANSO: begin
+                if (D == 0 && L == 1)
+                    estado_proximo = MUERTO;
+                else if (A == 5)
+                    estado_proximo = FELIZ;
+                else if (D == 4 && L == 0)
+                    estado_proximo = NEUTRO;
+                else
+                    estado_proximo = DESCANSO; // Mantener estado
+            end
+            MUERTO: begin
+                estado_proximo = MUERTO; // Estado final
+            end
+            AMISTAD: begin
+                if (D < 4 && MJ == 0)
+                    estado_proximo = DESCANSO;
+                else
+                    estado_proximo = AMISTAD; // Mantener estado
+            end
+            default: begin
+                estado_proximo = NEUTRO; // Estado por defecto
+            end
+        endcase
+    end
+
+    // Asignación del estado actual a la salida
+    assign estado_actual = estado;
+
+endmodule

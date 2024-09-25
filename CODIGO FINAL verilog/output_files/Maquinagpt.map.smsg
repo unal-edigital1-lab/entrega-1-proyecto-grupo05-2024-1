@@ -1,0 +1,7 @@
+Warning (10268): Verilog HDL information at Maquinagpt.v(214): always construct contains both blocking and non-blocking assignments File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 214
+Info (10281): Verilog HDL Declaration information at Maquinagpt.v(28): object "test" differs only in case from object "TEST" in the same scope File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 28
+Info (10281): Verilog HDL Declaration information at sensorsignal.v(27): object "COUNT" differs only in case from object "count" in the same scope File: /home/gualteros/Documentos/U/Digital_I/FINAL/sensorsignal.v Line: 27
+Warning (10268): Verilog HDL information at dht.v(60): always construct contains both blocking and non-blocking assignments File: /home/gualteros/Documentos/U/Digital_I/FINAL/dht.v Line: 60
+Warning (10268): Verilog HDL information at display_controller.v(42): always construct contains both blocking and non-blocking assignments File: /home/gualteros/Documentos/U/Digital_I/FINAL/display_controller.v Line: 42
+Warning (10268): Verilog HDL information at lcd_controller.v(67): always construct contains both blocking and non-blocking assignments File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 67
+Warning (10268): Verilog HDL information at lcd_controller.v(111): always construct contains both blocking and non-blocking assignments File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111

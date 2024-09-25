@@ -1,0 +1,113 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'clk'
+Slack : -84.590
+TNS   : -5355.999
+
+Type  : Slow 1200mV 85C Model Setup 'lcd_controller:disgato|clkr'
+Slack : -12.023
+TNS   : -566.294
+
+Type  : Slow 1200mV 85C Model Setup 'lcd_controller:disgato|est[4]'
+Slack : -5.373
+TNS   : -121.615
+
+Type  : Slow 1200mV 85C Model Hold 'lcd_controller:disgato|est[4]'
+Slack : -0.041
+TNS   : -0.041
+
+Type  : Slow 1200mV 85C Model Hold 'clk'
+Slack : 0.431
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'lcd_controller:disgato|clkr'
+Slack : 0.434
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -832.746
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'lcd_controller:disgato|clkr'
+Slack : -1.487
+TNS   : -166.544
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'lcd_controller:disgato|est[4]'
+Slack : 0.413
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'clk'
+Slack : -77.089
+TNS   : -4942.766
+
+Type  : Slow 1200mV 0C Model Setup 'lcd_controller:disgato|clkr'
+Slack : -10.893
+TNS   : -520.793
+
+Type  : Slow 1200mV 0C Model Setup 'lcd_controller:disgato|est[4]'
+Slack : -5.143
+TNS   : -113.093
+
+Type  : Slow 1200mV 0C Model Hold 'lcd_controller:disgato|est[4]'
+Slack : -0.106
+TNS   : -0.190
+
+Type  : Slow 1200mV 0C Model Hold 'clk'
+Slack : 0.382
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'lcd_controller:disgato|clkr'
+Slack : 0.384
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -832.746
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'lcd_controller:disgato|clkr'
+Slack : -1.487
+TNS   : -166.544
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'lcd_controller:disgato|est[4]'
+Slack : 0.260
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'clk'
+Slack : -35.851
+TNS   : -1988.308
+
+Type  : Fast 1200mV 0C Model Setup 'lcd_controller:disgato|clkr'
+Slack : -4.552
+TNS   : -181.733
+
+Type  : Fast 1200mV 0C Model Setup 'lcd_controller:disgato|est[4]'
+Slack : -1.812
+TNS   : -33.414
+
+Type  : Fast 1200mV 0C Model Hold 'lcd_controller:disgato|est[4]'
+Slack : -0.005
+TNS   : -0.005
+
+Type  : Fast 1200mV 0C Model Hold 'clk'
+Slack : 0.151
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'lcd_controller:disgato|clkr'
+Slack : 0.179
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -598.984
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'lcd_controller:disgato|clkr'
+Slack : -1.000
+TNS   : -112.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'lcd_controller:disgato|est[4]'
+Slack : 0.338
+TNS   : 0.000
+
+------------------------------------------------------------

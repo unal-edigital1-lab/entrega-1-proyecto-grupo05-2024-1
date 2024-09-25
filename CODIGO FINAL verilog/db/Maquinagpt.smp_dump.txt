@@ -1,0 +1,60 @@
+
+State Machine - |Maquinagpt|estado
+Name estado.TEST estado.AMISTAD estado.MUERTO estado.DESCANSO estado.HAMBRIENTO estado.NEUTRO estado.FELIZ 
+estado.FELIZ 0 0 0 0 0 0 0 
+estado.NEUTRO 0 0 0 0 0 1 1 
+estado.HAMBRIENTO 0 0 0 0 1 0 1 
+estado.DESCANSO 0 0 0 1 0 0 1 
+estado.MUERTO 0 0 1 0 0 0 1 
+estado.AMISTAD 0 1 0 0 0 0 1 
+estado.TEST 1 0 0 0 0 0 1 
+
+State Machine - |Maquinagpt|lcd_controller:disgato|state
+Name state.SENSOR state.IMPRE state.PERSO state.INICIO state.DIBUJO 
+state.INICIO 0 0 0 0 0 
+state.PERSO 0 0 1 1 0 
+state.IMPRE 0 1 0 1 0 
+state.SENSOR 1 0 0 1 0 
+state.DIBUJO 0 0 0 1 1 
+
+State Machine - |Maquinagpt|lcd_controller:disgato|next
+Name next.0011100 next.0011011 next.0011010 next.0011001 next.0011000 next.0010111 next.0010110 next.0010101 next.0010100 next.0010011 next.0010010 next.0010001 next.0010000 next.0001111 next.0001110 next.0001101 next.0001100 next.0001011 next.0001010 next.0001001 next.0001000 next.0000111 next.0000110 next.0000101 next.0000100 next.0000011 next.0000010 next.0000001 next.0000000 
+next.0000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+next.0000001 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+next.0000010 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+next.0000011 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+next.0000100 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+next.0000101 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+next.0000110 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+next.0000111 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+next.0001000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+next.0001001 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+next.0001010 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+next.0001011 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+next.0001100 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+next.0001101 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+next.0001110 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+next.0001111 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+next.0010000 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+next.0010001 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+next.0010010 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+next.0010011 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+next.0010100 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+next.0010101 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+next.0010110 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+next.0010111 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+next.0011000 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+next.0011001 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+next.0011010 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+next.0011011 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+next.0011100 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |Maquinagpt|sensorsignal:senal|dht:dht11|state
+Name state.PROCESS_DATA state.WAIT state.READ_DATA state.WAIT_RESPONSE_LOW state.WAIT_RESPONSE_HIGH state.START_SIGNAL state.ENABLE 
+state.ENABLE 0 0 0 0 0 0 0 
+state.START_SIGNAL 0 0 0 0 0 1 1 
+state.WAIT_RESPONSE_HIGH 0 0 0 0 1 0 1 
+state.WAIT_RESPONSE_LOW 0 0 0 1 0 0 1 
+state.READ_DATA 0 0 1 0 0 0 1 
+state.WAIT 0 1 0 0 0 0 1 
+state.PROCESS_DATA 1 0 0 0 0 0 1 

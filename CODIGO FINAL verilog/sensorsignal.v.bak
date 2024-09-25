@@ -1,0 +1,42 @@
+module sensorsignal(
+	//Sensor de Luz
+	input clk,
+	input reset,
+	input inluz,
+	output ouluz,
+	//Sensor de Ultrasonido
+	output trig,
+	input echo,
+	output reg led,
+);
+
+reg countrel;
+
+reg count;
+
+light luz(
+	.clk(clk),
+	.reset(reset),
+	.sensor_input(inluz),
+	.light_detected(ouluz)
+);
+
+
+sonido ultra(
+	.clock(clk),
+	.trig(trig),
+	.echo(echo),
+	.led(led)
+);
+
+//Divisor de Frecuencia
+always @(posedge clk) begin
+	countrel = countrel + 1;
+	if (countrel == 50000)
+		count = count + 1;
+	else if (countrel > 50000)
+		countrel => 0;
+end		
+	
+
+	

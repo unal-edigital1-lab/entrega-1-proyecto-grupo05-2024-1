@@ -1,0 +1,1298 @@
+Analysis & Synthesis report for Maquinagpt
+Mon Sep 23 15:43:52 2024
+Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |Maquinagpt|estado
+  9. State Machine - |Maquinagpt|lcd_controller:disgato|state
+ 10. State Machine - |Maquinagpt|lcd_controller:disgato|next
+ 11. State Machine - |Maquinagpt|sensorsignal:senal|dht:dht11|state
+ 12. User-Specified and Inferred Latches
+ 13. Registers Removed During Synthesis
+ 14. Removed Registers Triggering Further Register Optimizations
+ 15. General Register Statistics
+ 16. Inverted Register Statistics
+ 17. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 18. Parameter Settings for User Entity Instance: Top-level Entity: |Maquinagpt
+ 19. Parameter Settings for User Entity Instance: sensorsignal:senal
+ 20. Parameter Settings for User Entity Instance: lcd_controller:disgato
+ 21. Parameter Settings for Inferred Entity Instance: lcd_controller:disgato|lpm_divide:Mod1
+ 22. Parameter Settings for Inferred Entity Instance: lcd_controller:disgato|lpm_divide:Div0
+ 23. Parameter Settings for Inferred Entity Instance: lcd_controller:disgato|lpm_divide:Mod0
+ 24. Parameter Settings for Inferred Entity Instance: lcd_controller:disgato|lpm_divide:Mod3
+ 25. Parameter Settings for Inferred Entity Instance: lcd_controller:disgato|lpm_divide:Div1
+ 26. Parameter Settings for Inferred Entity Instance: lcd_controller:disgato|lpm_divide:Mod2
+ 27. Parameter Settings for Inferred Entity Instance: sensorsignal:senal|sonido:ultra|lpm_divide:Div0
+ 28. Port Connectivity Checks: "display_controller:display_ctrl|bcd_to_7seg:bcd7"
+ 29. Port Connectivity Checks: "display_controller:display_ctrl|bcd_to_7seg:bcd6"
+ 30. Port Connectivity Checks: "display_controller:display_ctrl|bcd_to_7seg:bcd4"
+ 31. Port Connectivity Checks: "display_controller:display_ctrl|bcd_to_7seg:bcd3"
+ 32. Port Connectivity Checks: "display_controller:display_ctrl|bcd_to_7seg:bcd0"
+ 33. Port Connectivity Checks: "sensorsignal:senal"
+ 34. Post-Synthesis Netlist Statistics for Top Partition
+ 35. Elapsed Time Per Partition
+ 36. Analysis & Synthesis Messages
+ 37. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2023  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                        ;
++------------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Mon Sep 23 15:43:52 2024          ;
+; Quartus Prime Version              ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
+; Revision Name                      ; Maquinagpt                                     ;
+; Top-level Entity Name              ; Maquinagpt                                     ;
+; Family                             ; Cyclone IV E                                   ;
+; Total logic elements               ; 2,675                                          ;
+;     Total combinational functions  ; 2,603                                          ;
+;     Dedicated logic registers      ; 670                                            ;
+; Total registers                    ; 670                                            ;
+; Total pins                         ; 39                                             ;
+; Total virtual pins                 ; 0                                              ;
+; Total memory bits                  ; 0                                              ;
+; Embedded Multiplier 9-bit elements ; 0                                              ;
+; Total PLLs                         ; 0                                              ;
++------------------------------------+------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EP4CE10E22C8       ;                    ;
+; Top-level entity name                                            ; Maquinagpt         ; Maquinagpt         ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 8           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 8           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                   ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                               ; Library ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------+---------+
+; Maquinagpt.v                     ; yes             ; User Verilog HDL File        ; /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v                                  ;         ;
+; sensorsignal.v                   ; yes             ; Auto-Found Verilog HDL File  ; /home/gualteros/Documentos/U/Digital_I/FINAL/sensorsignal.v                                ;         ;
+; light.v                          ; yes             ; Auto-Found Verilog HDL File  ; /home/gualteros/Documentos/U/Digital_I/FINAL/light.v                                       ;         ;
+; sonido.v                         ; yes             ; Auto-Found Verilog HDL File  ; /home/gualteros/Documentos/U/Digital_I/FINAL/sonido.v                                      ;         ;
+; dht.v                            ; yes             ; Auto-Found Verilog HDL File  ; /home/gualteros/Documentos/U/Digital_I/FINAL/dht.v                                         ;         ;
+; Humedad.v                        ; yes             ; Auto-Found Verilog HDL File  ; /home/gualteros/Documentos/U/Digital_I/FINAL/Humedad.v                                     ;         ;
+; display_controller.v             ; yes             ; Auto-Found Verilog HDL File  ; /home/gualteros/Documentos/U/Digital_I/FINAL/display_controller.v                          ;         ;
+; bcd_to_7seg.v                    ; yes             ; Auto-Found Verilog HDL File  ; /home/gualteros/Documentos/U/Digital_I/FINAL/bcd_to_7seg.v                                 ;         ;
+; lcd_controller.v                 ; yes             ; Auto-Found Verilog HDL File  ; /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v                              ;         ;
+; estado.v                         ; yes             ; Auto-Found Verilog HDL File  ; /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v                                      ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; /home/gualteros/intelFPGA_lite/23.1std/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; /home/gualteros/intelFPGA_lite/23.1std/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; /home/gualteros/intelFPGA_lite/23.1std/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
+; aglobal231.inc                   ; yes             ; Megafunction                 ; /home/gualteros/intelFPGA_lite/23.1std/quartus/libraries/megafunctions/aglobal231.inc      ;         ;
+; db/lpm_divide_m9m.tdf            ; yes             ; Auto-Generated Megafunction  ; /home/gualteros/Documentos/U/Digital_I/FINAL/db/lpm_divide_m9m.tdf                         ;         ;
+; db/sign_div_unsign_bkh.tdf       ; yes             ; Auto-Generated Megafunction  ; /home/gualteros/Documentos/U/Digital_I/FINAL/db/sign_div_unsign_bkh.tdf                    ;         ;
+; db/alt_u_div_a4f.tdf             ; yes             ; Auto-Generated Megafunction  ; /home/gualteros/Documentos/U/Digital_I/FINAL/db/alt_u_div_a4f.tdf                          ;         ;
+; db/add_sub_7pc.tdf               ; yes             ; Auto-Generated Megafunction  ; /home/gualteros/Documentos/U/Digital_I/FINAL/db/add_sub_7pc.tdf                            ;         ;
+; db/add_sub_8pc.tdf               ; yes             ; Auto-Generated Megafunction  ; /home/gualteros/Documentos/U/Digital_I/FINAL/db/add_sub_8pc.tdf                            ;         ;
+; db/lpm_divide_jhm.tdf            ; yes             ; Auto-Generated Megafunction  ; /home/gualteros/Documentos/U/Digital_I/FINAL/db/lpm_divide_jhm.tdf                         ;         ;
+; db/lpm_divide_3jm.tdf            ; yes             ; Auto-Generated Megafunction  ; /home/gualteros/Documentos/U/Digital_I/FINAL/db/lpm_divide_3jm.tdf                         ;         ;
+; db/sign_div_unsign_rlh.tdf       ; yes             ; Auto-Generated Megafunction  ; /home/gualteros/Documentos/U/Digital_I/FINAL/db/sign_div_unsign_rlh.tdf                    ;         ;
+; db/alt_u_div_a7f.tdf             ; yes             ; Auto-Generated Megafunction  ; /home/gualteros/Documentos/U/Digital_I/FINAL/db/alt_u_div_a7f.tdf                          ;         ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 2,675     ;
+;                                             ;           ;
+; Total combinational functions               ; 2603      ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 984       ;
+;     -- 3 input functions                    ; 525       ;
+;     -- <=2 input functions                  ; 1094      ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 1895      ;
+;     -- arithmetic mode                      ; 708       ;
+;                                             ;           ;
+; Total registers                             ; 670       ;
+;     -- Dedicated logic registers            ; 670       ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 39        ;
+;                                             ;           ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 558       ;
+; Total fan-out                               ; 9456      ;
+; Average fan-out                             ; 2.82      ;
++---------------------------------------------+-----------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                        ;
++----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                         ; Entity Name         ; Library Name ;
++----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; |Maquinagpt                                  ; 2603 (467)          ; 670 (167)                 ; 0           ; 0            ; 0       ; 0         ; 39   ; 0            ; |Maquinagpt                                                                                                                                 ; Maquinagpt          ; work         ;
+;    |display_controller:display_ctrl|         ; 94 (89)             ; 35 (35)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|display_controller:display_ctrl                                                                                                 ; display_controller  ; work         ;
+;       |bcd_to_7seg:bcd0|                     ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|display_controller:display_ctrl|bcd_to_7seg:bcd0                                                                                ; bcd_to_7seg         ; work         ;
+;       |bcd_to_7seg:bcd2|                     ; 3 (3)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|display_controller:display_ctrl|bcd_to_7seg:bcd2                                                                                ; bcd_to_7seg         ; work         ;
+;       |bcd_to_7seg:bcd5|                     ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|display_controller:display_ctrl|bcd_to_7seg:bcd5                                                                                ; bcd_to_7seg         ; work         ;
+;    |lcd_controller:disgato|                  ; 983 (578)           ; 136 (136)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato                                                                                                          ; lcd_controller      ; work         ;
+;       |estado:estado_one|                    ; 132 (132)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato|estado:estado_one                                                                                        ; estado              ; work         ;
+;       |lpm_divide:Div0|                      ; 56 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato|lpm_divide:Div0                                                                                          ; lpm_divide          ; work         ;
+;          |lpm_divide_jhm:auto_generated|     ; 56 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato|lpm_divide:Div0|lpm_divide_jhm:auto_generated                                                            ; lpm_divide_jhm      ; work         ;
+;             |sign_div_unsign_bkh:divider|    ; 56 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato|lpm_divide:Div0|lpm_divide_jhm:auto_generated|sign_div_unsign_bkh:divider                                ; sign_div_unsign_bkh ; work         ;
+;                |alt_u_div_a4f:divider|       ; 56 (56)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato|lpm_divide:Div0|lpm_divide_jhm:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_a4f:divider          ; alt_u_div_a4f       ; work         ;
+;       |lpm_divide:Div1|                      ; 56 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato|lpm_divide:Div1                                                                                          ; lpm_divide          ; work         ;
+;          |lpm_divide_jhm:auto_generated|     ; 56 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato|lpm_divide:Div1|lpm_divide_jhm:auto_generated                                                            ; lpm_divide_jhm      ; work         ;
+;             |sign_div_unsign_bkh:divider|    ; 56 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato|lpm_divide:Div1|lpm_divide_jhm:auto_generated|sign_div_unsign_bkh:divider                                ; sign_div_unsign_bkh ; work         ;
+;                |alt_u_div_a4f:divider|       ; 56 (56)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato|lpm_divide:Div1|lpm_divide_jhm:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_a4f:divider          ; alt_u_div_a4f       ; work         ;
+;       |lpm_divide:Mod0|                      ; 21 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato|lpm_divide:Mod0                                                                                          ; lpm_divide          ; work         ;
+;          |lpm_divide_m9m:auto_generated|     ; 21 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato|lpm_divide:Mod0|lpm_divide_m9m:auto_generated                                                            ; lpm_divide_m9m      ; work         ;
+;             |sign_div_unsign_bkh:divider|    ; 21 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato|lpm_divide:Mod0|lpm_divide_m9m:auto_generated|sign_div_unsign_bkh:divider                                ; sign_div_unsign_bkh ; work         ;
+;                |alt_u_div_a4f:divider|       ; 21 (21)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato|lpm_divide:Mod0|lpm_divide_m9m:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_a4f:divider          ; alt_u_div_a4f       ; work         ;
+;       |lpm_divide:Mod1|                      ; 59 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato|lpm_divide:Mod1                                                                                          ; lpm_divide          ; work         ;
+;          |lpm_divide_m9m:auto_generated|     ; 59 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato|lpm_divide:Mod1|lpm_divide_m9m:auto_generated                                                            ; lpm_divide_m9m      ; work         ;
+;             |sign_div_unsign_bkh:divider|    ; 59 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato|lpm_divide:Mod1|lpm_divide_m9m:auto_generated|sign_div_unsign_bkh:divider                                ; sign_div_unsign_bkh ; work         ;
+;                |alt_u_div_a4f:divider|       ; 59 (59)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato|lpm_divide:Mod1|lpm_divide_m9m:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_a4f:divider          ; alt_u_div_a4f       ; work         ;
+;       |lpm_divide:Mod2|                      ; 22 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato|lpm_divide:Mod2                                                                                          ; lpm_divide          ; work         ;
+;          |lpm_divide_m9m:auto_generated|     ; 22 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato|lpm_divide:Mod2|lpm_divide_m9m:auto_generated                                                            ; lpm_divide_m9m      ; work         ;
+;             |sign_div_unsign_bkh:divider|    ; 22 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato|lpm_divide:Mod2|lpm_divide_m9m:auto_generated|sign_div_unsign_bkh:divider                                ; sign_div_unsign_bkh ; work         ;
+;                |alt_u_div_a4f:divider|       ; 22 (22)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato|lpm_divide:Mod2|lpm_divide_m9m:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_a4f:divider          ; alt_u_div_a4f       ; work         ;
+;       |lpm_divide:Mod3|                      ; 59 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato|lpm_divide:Mod3                                                                                          ; lpm_divide          ; work         ;
+;          |lpm_divide_m9m:auto_generated|     ; 59 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato|lpm_divide:Mod3|lpm_divide_m9m:auto_generated                                                            ; lpm_divide_m9m      ; work         ;
+;             |sign_div_unsign_bkh:divider|    ; 59 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato|lpm_divide:Mod3|lpm_divide_m9m:auto_generated|sign_div_unsign_bkh:divider                                ; sign_div_unsign_bkh ; work         ;
+;                |alt_u_div_a4f:divider|       ; 59 (59)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|lcd_controller:disgato|lpm_divide:Mod3|lpm_divide_m9m:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_a4f:divider          ; alt_u_div_a4f       ; work         ;
+;    |sensorsignal:senal|                      ; 1059 (273)          ; 332 (125)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|sensorsignal:senal                                                                                                              ; sensorsignal        ; work         ;
+;       |Humedad:humm|                         ; 1 (1)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|sensorsignal:senal|Humedad:humm                                                                                                 ; Humedad             ; work         ;
+;       |dht:dht11|                            ; 126 (126)           ; 102 (102)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|sensorsignal:senal|dht:dht11                                                                                                    ; dht                 ; work         ;
+;       |light:luz|                            ; 1 (1)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|sensorsignal:senal|light:luz                                                                                                    ; light               ; work         ;
+;       |sonido:ultra|                         ; 658 (146)           ; 103 (103)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|sensorsignal:senal|sonido:ultra                                                                                                 ; sonido              ; work         ;
+;          |lpm_divide:Div0|                   ; 512 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|sensorsignal:senal|sonido:ultra|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
+;             |lpm_divide_3jm:auto_generated|  ; 512 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|sensorsignal:senal|sonido:ultra|lpm_divide:Div0|lpm_divide_3jm:auto_generated                                                   ; lpm_divide_3jm      ; work         ;
+;                |sign_div_unsign_rlh:divider| ; 512 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|sensorsignal:senal|sonido:ultra|lpm_divide:Div0|lpm_divide_3jm:auto_generated|sign_div_unsign_rlh:divider                       ; sign_div_unsign_rlh ; work         ;
+;                   |alt_u_div_a7f:divider|    ; 512 (512)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Maquinagpt|sensorsignal:senal|sonido:ultra|lpm_divide:Div0|lpm_divide_3jm:auto_generated|sign_div_unsign_rlh:divider|alt_u_div_a7f:divider ; alt_u_div_a7f       ; work         ;
++----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Maquinagpt|estado                                                                                                    ;
++-------------------+-------------+----------------+---------------+-----------------+-------------------+---------------+--------------+
+; Name              ; estado.TEST ; estado.AMISTAD ; estado.MUERTO ; estado.DESCANSO ; estado.HAMBRIENTO ; estado.NEUTRO ; estado.FELIZ ;
++-------------------+-------------+----------------+---------------+-----------------+-------------------+---------------+--------------+
+; estado.FELIZ      ; 0           ; 0              ; 0             ; 0               ; 0                 ; 0             ; 0            ;
+; estado.NEUTRO     ; 0           ; 0              ; 0             ; 0               ; 0                 ; 1             ; 1            ;
+; estado.HAMBRIENTO ; 0           ; 0              ; 0             ; 0               ; 1                 ; 0             ; 1            ;
+; estado.DESCANSO   ; 0           ; 0              ; 0             ; 1               ; 0                 ; 0             ; 1            ;
+; estado.MUERTO     ; 0           ; 0              ; 1             ; 0               ; 0                 ; 0             ; 1            ;
+; estado.AMISTAD    ; 0           ; 1              ; 0             ; 0               ; 0                 ; 0             ; 1            ;
+; estado.TEST       ; 1           ; 0              ; 0             ; 0               ; 0                 ; 0             ; 1            ;
++-------------------+-------------+----------------+---------------+-----------------+-------------------+---------------+--------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------+
+; State Machine - |Maquinagpt|lcd_controller:disgato|state                              ;
++--------------+--------------+-------------+-------------+--------------+--------------+
+; Name         ; state.SENSOR ; state.IMPRE ; state.PERSO ; state.INICIO ; state.DIBUJO ;
++--------------+--------------+-------------+-------------+--------------+--------------+
+; state.INICIO ; 0            ; 0           ; 0           ; 0            ; 0            ;
+; state.PERSO  ; 0            ; 0           ; 1           ; 1            ; 0            ;
+; state.IMPRE  ; 0            ; 1           ; 0           ; 1            ; 0            ;
+; state.SENSOR ; 1            ; 0           ; 0           ; 1            ; 0            ;
+; state.DIBUJO ; 0            ; 0           ; 0           ; 1            ; 1            ;
++--------------+--------------+-------------+-------------+--------------+--------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Maquinagpt|lcd_controller:disgato|next                                                                                                                                                                                                                                                                                                                                                                                                         ;
++--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
+; Name         ; next.0011100 ; next.0011011 ; next.0011010 ; next.0011001 ; next.0011000 ; next.0010111 ; next.0010110 ; next.0010101 ; next.0010100 ; next.0010011 ; next.0010010 ; next.0010001 ; next.0010000 ; next.0001111 ; next.0001110 ; next.0001101 ; next.0001100 ; next.0001011 ; next.0001010 ; next.0001001 ; next.0001000 ; next.0000111 ; next.0000110 ; next.0000101 ; next.0000100 ; next.0000011 ; next.0000010 ; next.0000001 ; next.0000000 ;
++--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
+; next.0000000 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ;
+; next.0000001 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 1            ;
+; next.0000010 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 1            ;
+; next.0000011 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 1            ;
+; next.0000100 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 1            ;
+; next.0000101 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; next.0000110 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; next.0000111 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; next.0001000 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; next.0001001 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; next.0001010 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; next.0001011 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; next.0001100 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; next.0001101 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; next.0001110 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; next.0001111 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; next.0010000 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; next.0010001 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; next.0010010 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; next.0010011 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; next.0010100 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; next.0010101 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; next.0010110 ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; next.0010111 ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; next.0011000 ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; next.0011001 ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; next.0011010 ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; next.0011011 ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
+; next.0011100 ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ;
++--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Maquinagpt|sensorsignal:senal|dht:dht11|state                                                                                                        ;
++--------------------------+--------------------+------------+-----------------+-------------------------+--------------------------+--------------------+--------------+
+; Name                     ; state.PROCESS_DATA ; state.WAIT ; state.READ_DATA ; state.WAIT_RESPONSE_LOW ; state.WAIT_RESPONSE_HIGH ; state.START_SIGNAL ; state.ENABLE ;
++--------------------------+--------------------+------------+-----------------+-------------------------+--------------------------+--------------------+--------------+
+; state.ENABLE             ; 0                  ; 0          ; 0               ; 0                       ; 0                        ; 0                  ; 0            ;
+; state.START_SIGNAL       ; 0                  ; 0          ; 0               ; 0                       ; 0                        ; 1                  ; 1            ;
+; state.WAIT_RESPONSE_HIGH ; 0                  ; 0          ; 0               ; 0                       ; 1                        ; 0                  ; 1            ;
+; state.WAIT_RESPONSE_LOW  ; 0                  ; 0          ; 0               ; 1                       ; 0                        ; 0                  ; 1            ;
+; state.READ_DATA          ; 0                  ; 0          ; 1               ; 0                       ; 0                        ; 0                  ; 1            ;
+; state.WAIT               ; 0                  ; 1          ; 0               ; 0                       ; 0                        ; 0                  ; 1            ;
+; state.PROCESS_DATA       ; 1                  ; 0          ; 0               ; 0                       ; 0                        ; 0                  ; 1            ;
++--------------------------+--------------------+------------+-----------------+-------------------------+--------------------------+--------------------+--------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                                              ;
++-----------------------------------------------------+---------------------------------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal                               ; Free of Timing Hazards ;
++-----------------------------------------------------+---------------------------------------------------+------------------------+
+; lcd_controller:disgato|estado:estado_one|char[8]    ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[16]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[0]    ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[24]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[48]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[40]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[32]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[56]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[9]    ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[17]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[1]    ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[25]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[49]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[41]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[33]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[57]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[18]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[26]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[50]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[42]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[34]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[58]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[11]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[19]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[3]    ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[27]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[51]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[43]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[35]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[59]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[12]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[20]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[4]    ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[28]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[52]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[44]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[36]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; lcd_controller:disgato|estado:estado_one|char[60]   ; lcd_controller:disgato|estado:estado_one|WideOr70 ; yes                    ;
+; Number of user-specified and inferred latches = 38  ;                                                   ;                        ;
++-----------------------------------------------------+---------------------------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                ;
++-------------------------------------------------------+-----------------------------------------------------------+
+; Register name                                         ; Reason for Removal                                        ;
++-------------------------------------------------------+-----------------------------------------------------------+
+; lcd_controller:disgato|array[26][7]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[26][4]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[25][7]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[25][4]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[25][2]                   ; Stuck at VCC due to stuck port data_in                    ;
+; lcd_controller:disgato|array[24][7]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[24][4]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[24][3]                   ; Stuck at VCC due to stuck port data_in                    ;
+; lcd_controller:disgato|array[24][2]                   ; Stuck at VCC due to stuck port data_in                    ;
+; lcd_controller:disgato|array[24][0]                   ; Stuck at VCC due to stuck port data_in                    ;
+; lcd_controller:disgato|array[13][7]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[13][6]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[13][5]                   ; Stuck at VCC due to stuck port data_in                    ;
+; lcd_controller:disgato|array[12][7]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[12][6]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[12][5]                   ; Stuck at VCC due to stuck port data_in                    ;
+; lcd_controller:disgato|array[6][7]                    ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[6][4]                    ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[5][7]                    ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[5][4]                    ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[5][2]                    ; Stuck at VCC due to stuck port data_in                    ;
+; lcd_controller:disgato|array[4][7]                    ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[4][4]                    ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[4][3]                    ; Stuck at VCC due to stuck port data_in                    ;
+; lcd_controller:disgato|array[4][2]                    ; Stuck at VCC due to stuck port data_in                    ;
+; lcd_controller:disgato|array[4][0]                    ; Stuck at VCC due to stuck port data_in                    ;
+; lcd_controller:disgato|array[32][5]                   ; Stuck at VCC due to stuck port data_in                    ;
+; lcd_controller:disgato|array[32][6]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[32][7]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[33][5]                   ; Stuck at VCC due to stuck port data_in                    ;
+; lcd_controller:disgato|array[33][6]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[33][7]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[44][0]                   ; Stuck at VCC due to stuck port data_in                    ;
+; lcd_controller:disgato|array[44][2]                   ; Stuck at VCC due to stuck port data_in                    ;
+; lcd_controller:disgato|array[44][3]                   ; Stuck at VCC due to stuck port data_in                    ;
+; lcd_controller:disgato|array[44][4]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[44][7]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[45][2]                   ; Stuck at VCC due to stuck port data_in                    ;
+; lcd_controller:disgato|array[45][4]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[45][7]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[46][4]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[46][7]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[50][5]                   ; Stuck at VCC due to stuck port data_in                    ;
+; lcd_controller:disgato|array[50][6]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[50][7]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[54][5]                   ; Stuck at VCC due to stuck port data_in                    ;
+; lcd_controller:disgato|array[54][6]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[54][7]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[65][2]                   ; Stuck at VCC due to stuck port data_in                    ;
+; lcd_controller:disgato|array[65][3]                   ; Stuck at VCC due to stuck port data_in                    ;
+; lcd_controller:disgato|array[65][4]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[65][7]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[66][0]                   ; Stuck at VCC due to stuck port data_in                    ;
+; lcd_controller:disgato|array[66][3]                   ; Stuck at VCC due to stuck port data_in                    ;
+; lcd_controller:disgato|array[66][4]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[66][7]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[67][7]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[71][5]                   ; Stuck at VCC due to stuck port data_in                    ;
+; lcd_controller:disgato|array[71][6]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|array[71][7]                   ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|tim[0..2]                      ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|tim[4,5,7,8]                   ; Stuck at VCC due to stuck port data_in                    ;
+; lcd_controller:disgato|tim[10]                        ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|tim[11]                        ; Stuck at VCC due to stuck port data_in                    ;
+; lcd_controller:disgato|tim[12,13,15,16,18..22]        ; Stuck at GND due to stuck port data_in                    ;
+; lcd_controller:disgato|tim[6,17]                      ; Merged with lcd_controller:disgato|tim[14]                ;
+; lcd_controller:disgato|array[45][0]                   ; Merged with lcd_controller:disgato|array[44][5]           ;
+; lcd_controller:disgato|array[45][5]                   ; Merged with lcd_controller:disgato|array[44][5]           ;
+; lcd_controller:disgato|array[46][0]                   ; Merged with lcd_controller:disgato|array[44][5]           ;
+; lcd_controller:disgato|array[46][3]                   ; Merged with lcd_controller:disgato|array[44][5]           ;
+; lcd_controller:disgato|array[25][0]                   ; Merged with lcd_controller:disgato|array[24][5]           ;
+; lcd_controller:disgato|array[25][5]                   ; Merged with lcd_controller:disgato|array[24][5]           ;
+; lcd_controller:disgato|array[26][0]                   ; Merged with lcd_controller:disgato|array[24][5]           ;
+; lcd_controller:disgato|array[26][3]                   ; Merged with lcd_controller:disgato|array[24][5]           ;
+; lcd_controller:disgato|array[5][0]                    ; Merged with lcd_controller:disgato|array[4][5]            ;
+; lcd_controller:disgato|array[5][5]                    ; Merged with lcd_controller:disgato|array[4][5]            ;
+; lcd_controller:disgato|array[6][0]                    ; Merged with lcd_controller:disgato|array[4][5]            ;
+; lcd_controller:disgato|array[6][3]                    ; Merged with lcd_controller:disgato|array[4][5]            ;
+; lcd_controller:disgato|array[67][0]                   ; Merged with lcd_controller:disgato|array[66][2]           ;
+; lcd_controller:disgato|array[67][2]                   ; Merged with lcd_controller:disgato|array[66][2]           ;
+; lcd_controller:disgato|array[67][5]                   ; Merged with lcd_controller:disgato|array[65][0]           ;
+; lcd_controller:disgato|array[46][6]                   ; Merged with lcd_controller:disgato|array[46][1]           ;
+; lcd_controller:disgato|array[44][6]                   ; Merged with lcd_controller:disgato|array[44][1]           ;
+; lcd_controller:disgato|array[45][1]                   ; Merged with lcd_controller:disgato|array[44][1]           ;
+; lcd_controller:disgato|array[45][6]                   ; Merged with lcd_controller:disgato|array[44][1]           ;
+; lcd_controller:disgato|array[26][6]                   ; Merged with lcd_controller:disgato|array[26][1]           ;
+; lcd_controller:disgato|array[24][6]                   ; Merged with lcd_controller:disgato|array[24][1]           ;
+; lcd_controller:disgato|array[25][1]                   ; Merged with lcd_controller:disgato|array[24][1]           ;
+; lcd_controller:disgato|array[25][6]                   ; Merged with lcd_controller:disgato|array[24][1]           ;
+; lcd_controller:disgato|array[6][6]                    ; Merged with lcd_controller:disgato|array[6][1]            ;
+; lcd_controller:disgato|array[4][6]                    ; Merged with lcd_controller:disgato|array[4][1]            ;
+; lcd_controller:disgato|array[5][1]                    ; Merged with lcd_controller:disgato|array[4][1]            ;
+; lcd_controller:disgato|array[5][6]                    ; Merged with lcd_controller:disgato|array[4][1]            ;
+; lcd_controller:disgato|array[66][1]                   ; Merged with lcd_controller:disgato|array[65][6]           ;
+; lcd_controller:disgato|array[66][6]                   ; Merged with lcd_controller:disgato|array[65][6]           ;
+; lcd_controller:disgato|array[46][5]                   ; Merged with lcd_controller:disgato|array[45][3]           ;
+; lcd_controller:disgato|array[26][5]                   ; Merged with lcd_controller:disgato|array[25][3]           ;
+; lcd_controller:disgato|array[6][5]                    ; Merged with lcd_controller:disgato|array[5][3]            ;
+; lcd_controller:disgato|tim[9]                         ; Merged with lcd_controller:disgato|tim[3]                 ;
+; lcd_controller:disgato|array[67][4]                   ; Merged with lcd_controller:disgato|array[67][1]           ;
+; lcd_controller:disgato|array[67][6]                   ; Merged with lcd_controller:disgato|array[67][1]           ;
+; lcd_controller:disgato|array[66][5]                   ; Merged with lcd_controller:disgato|array[65][5]           ;
+; lcd_controller:disgato|array[67][3]                   ; Merged with lcd_controller:disgato|array[65][5]           ;
+; lcd_controller:disgato|array[13][4]                   ; Merged with lcd_controller:disgato|array[12][4]           ;
+; lcd_controller:disgato|array[32][4]                   ; Merged with lcd_controller:disgato|array[12][4]           ;
+; lcd_controller:disgato|array[33][4]                   ; Merged with lcd_controller:disgato|array[12][4]           ;
+; counttest[29..31]                                     ; Stuck at GND due to stuck port data_in                    ;
+; counter[30,31]                                        ; Stuck at GND due to stuck port data_in                    ;
+; countH[30,31]                                         ; Stuck at GND due to stuck port data_in                    ;
+; sensorsignal:senal|countrel[27..29]                   ; Stuck at GND due to stuck port data_in                    ;
+; sensorsignal:senal|countfrio[29]                      ; Stuck at GND due to stuck port data_in                    ;
+; sensorsignal:senal|countbano[28,29]                   ; Stuck at GND due to stuck port data_in                    ;
+; sensorsignal:senal|count[28,29]                       ; Stuck at GND due to stuck port data_in                    ;
+; counttest[26..28]                                     ; Stuck at GND due to stuck port data_in                    ;
+; counter[28,29]                                        ; Stuck at GND due to stuck port data_in                    ;
+; countH[29]                                            ; Stuck at GND due to stuck port data_in                    ;
+; sensorsignal:senal|sonido:ultra|one_us_cnt[0]         ; Merged with sensorsignal:senal|sonido:ultra|ten_us_cnt[0] ;
+; sensorsignal:senal|sonido:ultra|forty_ms_cnt[0]       ; Merged with sensorsignal:senal|sonido:ultra|ten_us_cnt[0] ;
+; estado~2                                              ; Lost fanout                                               ;
+; estado~3                                              ; Lost fanout                                               ;
+; estado~4                                              ; Lost fanout                                               ;
+; lcd_controller:disgato|state~7                        ; Lost fanout                                               ;
+; lcd_controller:disgato|state~8                        ; Lost fanout                                               ;
+; lcd_controller:disgato|state~10                       ; Lost fanout                                               ;
+; lcd_controller:disgato|next~26                        ; Lost fanout                                               ;
+; lcd_controller:disgato|next~27                        ; Lost fanout                                               ;
+; lcd_controller:disgato|next~28                        ; Lost fanout                                               ;
+; lcd_controller:disgato|next~29                        ; Lost fanout                                               ;
+; lcd_controller:disgato|next~30                        ; Lost fanout                                               ;
+; lcd_controller:disgato|next~31                        ; Lost fanout                                               ;
+; lcd_controller:disgato|next~32                        ; Lost fanout                                               ;
+; sensorsignal:senal|dht:dht11|state~9                  ; Lost fanout                                               ;
+; sensorsignal:senal|dht:dht11|state~10                 ; Lost fanout                                               ;
+; sensorsignal:senal|dht:dht11|state~11                 ; Lost fanout                                               ;
+; sensorsignal:senal|dht:dht11|state~12                 ; Lost fanout                                               ;
+; lcd_controller:disgato|array[4][5]                    ; Merged with lcd_controller:disgato|array[4][1]            ;
+; lcd_controller:disgato|array[24][5]                   ; Merged with lcd_controller:disgato|array[24][1]           ;
+; lcd_controller:disgato|array[44][5]                   ; Merged with lcd_controller:disgato|array[44][1]           ;
+; lcd_controller:disgato|array[67][1]                   ; Merged with lcd_controller:disgato|array[65][0]           ;
+; lcd_controller:disgato|array[66][2]                   ; Merged with lcd_controller:disgato|array[65][1]           ;
+; lcd_controller:disgato|array[6][1]                    ; Merged with lcd_controller:disgato|array[5][3]            ;
+; lcd_controller:disgato|array[26][1]                   ; Merged with lcd_controller:disgato|array[25][3]           ;
+; lcd_controller:disgato|array[46][1]                   ; Merged with lcd_controller:disgato|array[45][3]           ;
+; lcd_controller:disgato|array[65][6]                   ; Merged with lcd_controller:disgato|array[65][5]           ;
+; lcd_controller:disgato|array[50][4]                   ; Merged with lcd_controller:disgato|array[50][3]           ;
+; lcd_controller:disgato|array[54][4]                   ; Merged with lcd_controller:disgato|array[54][3]           ;
+; lcd_controller:disgato|array[71][4]                   ; Merged with lcd_controller:disgato|array[71][3]           ;
+; sensorsignal:senal|sonido:ultra|distance[28..32]      ; Stuck at GND due to stuck port data_in                    ;
+; sensorsignal:senal|dht:dht11|state.WAIT_RESPONSE_HIGH ; Stuck at GND due to stuck port data_in                    ;
+; Total Number of Removed Registers = 178               ;                                                           ;
++-------------------------------------------------------+-----------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                             ;
++---------------+---------------------------+---------------------------------------------+
+; Register name ; Reason for Removal        ; Registers Removed due to This Register      ;
++---------------+---------------------------+---------------------------------------------+
+; counttest[31] ; Stuck at GND              ; counttest[28], counttest[27], counttest[26] ;
+;               ; due to stuck port data_in ;                                             ;
+; counter[31]   ; Stuck at GND              ; counter[29], counter[28]                    ;
+;               ; due to stuck port data_in ;                                             ;
+; countH[31]    ; Stuck at GND              ; countH[29]                                  ;
+;               ; due to stuck port data_in ;                                             ;
++---------------+---------------------------+---------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 670   ;
+; Number of registers using Synchronous Clear  ; 151   ;
+; Number of registers using Synchronous Load   ; 2     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 376   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------+
+; Inverted Register Statistics                      ;
++-----------------------------------------+---------+
+; Inverted Register                       ; Fan out ;
++-----------------------------------------+---------+
+; H[2]                                    ; 11      ;
+; H[0]                                    ; 9       ;
+; D[2]                                    ; 9       ;
+; D[0]                                    ; 9       ;
+; A[2]                                    ; 7       ;
+; A[0]                                    ; 10      ;
+; lcd_controller:disgato|tim[14]          ; 2       ;
+; lcd_controller:disgato|array[71][0]     ; 3       ;
+; lcd_controller:disgato|array[54][0]     ; 3       ;
+; lcd_controller:disgato|array[50][0]     ; 3       ;
+; lcd_controller:disgato|array[65][0]     ; 8       ;
+; lcd_controller:disgato|array[33][0]     ; 2       ;
+; lcd_controller:disgato|array[12][0]     ; 2       ;
+; lcd_controller:disgato|array[32][0]     ; 2       ;
+; lcd_controller:disgato|array[13][0]     ; 2       ;
+; lcd_controller:disgato|array[45][3]     ; 5       ;
+; lcd_controller:disgato|array[65][5]     ; 8       ;
+; lcd_controller:disgato|array[25][3]     ; 5       ;
+; lcd_controller:disgato|array[5][3]      ; 6       ;
+; lcd_controller:disgato|array[54][2]     ; 3       ;
+; lcd_controller:disgato|array[32][2]     ; 2       ;
+; lcd_controller:disgato|array[33][2]     ; 2       ;
+; lcd_controller:disgato|array[26][2]     ; 3       ;
+; lcd_controller:disgato|array[71][2]     ; 4       ;
+; lcd_controller:disgato|array[46][2]     ; 3       ;
+; lcd_controller:disgato|array[50][2]     ; 3       ;
+; lcd_controller:disgato|array[12][2]     ; 2       ;
+; lcd_controller:disgato|array[13][2]     ; 2       ;
+; lcd_controller:disgato|array[6][2]      ; 2       ;
+; lcd_controller:disgato|array[33][3]     ; 2       ;
+; lcd_controller:disgato|array[71][3]     ; 5       ;
+; lcd_controller:disgato|array[54][3]     ; 4       ;
+; lcd_controller:disgato|array[50][3]     ; 4       ;
+; lcd_controller:disgato|array[32][3]     ; 2       ;
+; lcd_controller:disgato|array[13][3]     ; 2       ;
+; lcd_controller:disgato|array[12][3]     ; 2       ;
+; Total number of inverted registers = 36 ;         ;
++-----------------------------------------+---------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |Maquinagpt|counter[4]                                     ;
+; 3:1                ; 33 bits   ; 66 LEs        ; 33 LEs               ; 33 LEs                 ; Yes        ; |Maquinagpt|sensorsignal:senal|sonido:ultra|us_counter[15] ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |Maquinagpt|sensorsignal:senal|countfrio[23]               ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |Maquinagpt|sensorsignal:senal|countbano[18]               ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |Maquinagpt|sensorsignal:senal|count[24]                   ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |Maquinagpt|counttest[18]                                  ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 6 LEs                ; 12 LEs                 ; Yes        ; |Maquinagpt|sensorsignal:senal|dht:dht11|bit_index[5]      ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |Maquinagpt|lcd_controller:disgato|cont[2]                 ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |Maquinagpt|countH[20]                                     ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 2 LEs                ; 8 LEs                  ; Yes        ; |Maquinagpt|lcd_controller:disgato|est[6]                  ;
+; 8:1                ; 4 bits    ; 20 LEs        ; 8 LEs                ; 12 LEs                 ; Yes        ; |Maquinagpt|lcd_controller:disgato|est[2]                  ;
+; 9:1                ; 6 bits    ; 36 LEs        ; 6 LEs                ; 30 LEs                 ; Yes        ; |Maquinagpt|lcd_controller:disgato|carac[4]                ;
+; 7:1                ; 32 bits   ; 128 LEs       ; 32 LEs               ; 96 LEs                 ; Yes        ; |Maquinagpt|countD[21]                                     ;
+; 13:1               ; 32 bits   ; 256 LEs       ; 32 LEs               ; 224 LEs                ; Yes        ; |Maquinagpt|countA[7]                                      ;
+; 17:1               ; 32 bits   ; 352 LEs       ; 32 LEs               ; 320 LEs                ; Yes        ; |Maquinagpt|sensorsignal:senal|dht:dht11|timer[1]          ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 6 LEs                ; 4 LEs                  ; Yes        ; |Maquinagpt|H[0]                                           ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Maquinagpt|lcd_controller:disgato|Mux7                    ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |Maquinagpt|display_controller:display_ctrl|Mux5           ;
+; 10:1               ; 5 bits    ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |Maquinagpt|lcd_controller:disgato|next                    ;
+; 11:1               ; 5 bits    ; 35 LEs        ; 20 LEs               ; 15 LEs                 ; No         ; |Maquinagpt|lcd_controller:disgato|state                   ;
+; 11:1               ; 5 bits    ; 35 LEs        ; 20 LEs               ; 15 LEs                 ; No         ; |Maquinagpt|lcd_controller:disgato|next                    ;
+; 12:1               ; 19 bits   ; 152 LEs       ; 38 LEs               ; 114 LEs                ; No         ; |Maquinagpt|lcd_controller:disgato|next                    ;
+; 15:1               ; 2 bits    ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; No         ; |Maquinagpt|sensorsignal:senal|dht:dht11|state             ;
+; 15:1               ; 5 bits    ; 50 LEs        ; 30 LEs               ; 20 LEs                 ; No         ; |Maquinagpt|sensorsignal:senal|dht:dht11|state             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |Maquinagpt ;
++----------------+------------+----------------------------------------------+
+; Parameter Name ; Value      ; Type                                         ;
++----------------+------------+----------------------------------------------+
+; FELIZ          ; 000        ; Unsigned Binary                              ;
+; NEUTRO         ; 001        ; Unsigned Binary                              ;
+; HAMBRIENTO     ; 010        ; Unsigned Binary                              ;
+; DESCANSO       ; 011        ; Unsigned Binary                              ;
+; MUERTO         ; 100        ; Unsigned Binary                              ;
+; AMISTAD        ; 101        ; Unsigned Binary                              ;
+; TEST           ; 110        ; Unsigned Binary                              ;
+; HAMBRE         ; 500000000  ; Signed Integer                               ;
+; DORMIR         ; 250000000  ; Signed Integer                               ;
+; AMISTO         ; 500000000  ; Signed Integer                               ;
+; SUMAA          ; 250000000  ; Signed Integer                               ;
+; SUMAD          ; 250000000  ; Signed Integer                               ;
+; SUMAF          ; 500000000  ; Signed Integer                               ;
+; COUNT          ; -129542144 ; Signed Integer                               ;
++----------------+------------+----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: sensorsignal:senal ;
++----------------+------------+-----------------------------------+
+; Parameter Name ; Value      ; Type                              ;
++----------------+------------+-----------------------------------+
+; COUNT          ; 1000000000 ; Signed Integer                    ;
++----------------+------------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: lcd_controller:disgato ;
++----------------+---------+------------------------------------------+
+; Parameter Name ; Value   ; Type                                     ;
++----------------+---------+------------------------------------------+
+; COUNT_MAX      ; 800000  ; Signed Integer                           ;
+; MORE           ; 5000000 ; Signed Integer                           ;
+; INIT           ; 0       ; Signed Integer                           ;
++----------------+---------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lcd_controller:disgato|lpm_divide:Mod1 ;
++------------------------+----------------+-----------------------------------------------+
+; Parameter Name         ; Value          ; Type                                          ;
++------------------------+----------------+-----------------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                       ;
+; LPM_WIDTHD             ; 4              ; Untyped                                       ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                       ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                       ;
+; LPM_PIPELINE           ; 0              ; Untyped                                       ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                       ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                       ;
+; CBXI_PARAMETER         ; lpm_divide_m9m ; Untyped                                       ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                       ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                       ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                    ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                  ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                  ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                ;
++------------------------+----------------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lcd_controller:disgato|lpm_divide:Div0 ;
++------------------------+----------------+-----------------------------------------------+
+; Parameter Name         ; Value          ; Type                                          ;
++------------------------+----------------+-----------------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                       ;
+; LPM_WIDTHD             ; 4              ; Untyped                                       ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                       ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                       ;
+; LPM_PIPELINE           ; 0              ; Untyped                                       ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                       ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                       ;
+; CBXI_PARAMETER         ; lpm_divide_jhm ; Untyped                                       ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                       ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                       ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                    ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                  ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                  ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                ;
++------------------------+----------------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lcd_controller:disgato|lpm_divide:Mod0 ;
++------------------------+----------------+-----------------------------------------------+
+; Parameter Name         ; Value          ; Type                                          ;
++------------------------+----------------+-----------------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                       ;
+; LPM_WIDTHD             ; 4              ; Untyped                                       ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                       ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                       ;
+; LPM_PIPELINE           ; 0              ; Untyped                                       ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                       ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                       ;
+; CBXI_PARAMETER         ; lpm_divide_m9m ; Untyped                                       ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                       ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                       ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                    ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                  ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                  ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                ;
++------------------------+----------------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lcd_controller:disgato|lpm_divide:Mod3 ;
++------------------------+----------------+-----------------------------------------------+
+; Parameter Name         ; Value          ; Type                                          ;
++------------------------+----------------+-----------------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                       ;
+; LPM_WIDTHD             ; 4              ; Untyped                                       ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                       ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                       ;
+; LPM_PIPELINE           ; 0              ; Untyped                                       ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                       ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                       ;
+; CBXI_PARAMETER         ; lpm_divide_m9m ; Untyped                                       ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                       ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                       ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                    ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                  ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                  ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                ;
++------------------------+----------------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lcd_controller:disgato|lpm_divide:Div1 ;
++------------------------+----------------+-----------------------------------------------+
+; Parameter Name         ; Value          ; Type                                          ;
++------------------------+----------------+-----------------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                       ;
+; LPM_WIDTHD             ; 4              ; Untyped                                       ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                       ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                       ;
+; LPM_PIPELINE           ; 0              ; Untyped                                       ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                       ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                       ;
+; CBXI_PARAMETER         ; lpm_divide_jhm ; Untyped                                       ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                       ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                       ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                    ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                  ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                  ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                ;
++------------------------+----------------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lcd_controller:disgato|lpm_divide:Mod2 ;
++------------------------+----------------+-----------------------------------------------+
+; Parameter Name         ; Value          ; Type                                          ;
++------------------------+----------------+-----------------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                       ;
+; LPM_WIDTHD             ; 4              ; Untyped                                       ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                       ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                       ;
+; LPM_PIPELINE           ; 0              ; Untyped                                       ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                       ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                       ;
+; CBXI_PARAMETER         ; lpm_divide_m9m ; Untyped                                       ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                       ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                       ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                    ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                  ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                  ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                ;
++------------------------+----------------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: sensorsignal:senal|sonido:ultra|lpm_divide:Div0 ;
++------------------------+----------------+--------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                   ;
++------------------------+----------------+--------------------------------------------------------+
+; LPM_WIDTHN             ; 33             ; Untyped                                                ;
+; LPM_WIDTHD             ; 6              ; Untyped                                                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                ;
+; CBXI_PARAMETER         ; lpm_divide_3jm ; Untyped                                                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                         ;
++------------------------+----------------+--------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; Port Connectivity Checks: "display_controller:display_ctrl|bcd_to_7seg:bcd7" ;
++--------+-------+----------+--------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                          ;
++--------+-------+----------+--------------------------------------------------+
+; bcd[3] ; Input ; Info     ; Stuck at VCC                                     ;
++--------+-------+----------+--------------------------------------------------+
+
+
++------------------------------------------------------------------------------+
+; Port Connectivity Checks: "display_controller:display_ctrl|bcd_to_7seg:bcd6" ;
++--------+-------+----------+--------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                          ;
++--------+-------+----------+--------------------------------------------------+
+; bcd[0] ; Input ; Info     ; Stuck at VCC                                     ;
++--------+-------+----------+--------------------------------------------------+
+
+
++------------------------------------------------------------------------------+
+; Port Connectivity Checks: "display_controller:display_ctrl|bcd_to_7seg:bcd4" ;
++--------+-------+----------+--------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                          ;
++--------+-------+----------+--------------------------------------------------+
+; bcd[4] ; Input ; Info     ; Stuck at GND                                     ;
++--------+-------+----------+--------------------------------------------------+
+
+
++------------------------------------------------------------------------------+
+; Port Connectivity Checks: "display_controller:display_ctrl|bcd_to_7seg:bcd3" ;
++--------+-------+----------+--------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                          ;
++--------+-------+----------+--------------------------------------------------+
+; bcd[3] ; Input ; Info     ; Stuck at GND                                     ;
++--------+-------+----------+--------------------------------------------------+
+
+
++------------------------------------------------------------------------------+
+; Port Connectivity Checks: "display_controller:display_ctrl|bcd_to_7seg:bcd0" ;
++--------+-------+----------+--------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                          ;
++--------+-------+----------+--------------------------------------------------+
+; bcd[4] ; Input ; Info     ; Stuck at GND                                     ;
++--------+-------+----------+--------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "sensorsignal:senal"                                                                                       ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                                                  ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; ouhum ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; T     ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 39                          ;
+; cycloneiii_ff         ; 670                         ;
+;     ENA               ; 286                         ;
+;     ENA SCLR          ; 89                          ;
+;     ENA SCLR SLD      ; 1                           ;
+;     SCLR              ; 61                          ;
+;     SLD               ; 1                           ;
+;     plain             ; 232                         ;
+; cycloneiii_io_obuf    ; 1                           ;
+; cycloneiii_lcell_comb ; 2612                        ;
+;     arith             ; 708                         ;
+;         1 data inputs ; 2                           ;
+;         2 data inputs ; 455                         ;
+;         3 data inputs ; 251                         ;
+;     normal            ; 1904                        ;
+;         0 data inputs ; 60                          ;
+;         1 data inputs ; 61                          ;
+;         2 data inputs ; 525                         ;
+;         3 data inputs ; 274                         ;
+;         4 data inputs ; 984                         ;
+;                       ;                             ;
+; Max LUT depth         ; 71.70                       ;
+; Average LUT depth     ; 18.28                       ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:13     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+    Info: Processing started: Mon Sep 23 15:43:24 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Maquinagpt -c Maquinagpt
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
+Warning (10259): Verilog HDL error at Maquinagpt.v(115): constant value overflow File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 115
+Info (12021): Found 1 design units, including 1 entities, in source file Maquinagpt.v
+    Info (12023): Found entity 1: Maquinagpt File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 1
+Warning (12019): Can't analyze file -- file signal.v is missing
+Warning (10236): Verilog HDL Implicit Net warning at Maquinagpt.v(354): created implicit net for "estado_actual" File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 354
+Info (12127): Elaborating entity "Maquinagpt" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at Maquinagpt.v(354): object "estado_actual" assigned a value but never read File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 354
+Warning (10230): Verilog HDL assignment warning at Maquinagpt.v(227): truncated value with size 32 to match size of target (3) File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 227
+Warning (10230): Verilog HDL assignment warning at Maquinagpt.v(231): truncated value with size 32 to match size of target (3) File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 231
+Warning (10230): Verilog HDL assignment warning at Maquinagpt.v(235): truncated value with size 32 to match size of target (3) File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 235
+Warning (10230): Verilog HDL assignment warning at Maquinagpt.v(244): truncated value with size 32 to match size of target (3) File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 244
+Warning (10230): Verilog HDL assignment warning at Maquinagpt.v(251): truncated value with size 32 to match size of target (3) File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 251
+Warning (10230): Verilog HDL assignment warning at Maquinagpt.v(255): truncated value with size 32 to match size of target (3) File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 255
+Warning (10230): Verilog HDL assignment warning at Maquinagpt.v(259): truncated value with size 32 to match size of target (3) File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 259
+Warning (10230): Verilog HDL assignment warning at Maquinagpt.v(271): truncated value with size 32 to match size of target (3) File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 271
+Warning (10230): Verilog HDL assignment warning at Maquinagpt.v(276): truncated value with size 32 to match size of target (3) File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 276
+Warning (10230): Verilog HDL assignment warning at Maquinagpt.v(294): truncated value with size 32 to match size of target (3) File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 294
+Warning (10230): Verilog HDL assignment warning at Maquinagpt.v(298): truncated value with size 32 to match size of target (3) File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 298
+Warning (10230): Verilog HDL assignment warning at Maquinagpt.v(302): truncated value with size 32 to match size of target (3) File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 302
+Warning (10230): Verilog HDL assignment warning at Maquinagpt.v(307): truncated value with size 32 to match size of target (3) File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 307
+Warning (10230): Verilog HDL assignment warning at Maquinagpt.v(311): truncated value with size 32 to match size of target (3) File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 311
+Warning (10230): Verilog HDL assignment warning at Maquinagpt.v(323): truncated value with size 32 to match size of target (3) File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 323
+Warning (10230): Verilog HDL assignment warning at Maquinagpt.v(328): truncated value with size 32 to match size of target (3) File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 328
+Warning (10230): Verilog HDL assignment warning at Maquinagpt.v(333): truncated value with size 32 to match size of target (3) File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 333
+Warning (10230): Verilog HDL assignment warning at Maquinagpt.v(354): truncated value with size 3 to match size of target (1) File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 354
+Warning (10034): Output port "ledd" at Maquinagpt.v(20) has no driver File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 20
+Warning (12125): Using design file sensorsignal.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: sensorsignal File: /home/gualteros/Documentos/U/Digital_I/FINAL/sensorsignal.v Line: 1
+Info (12128): Elaborating entity "sensorsignal" for hierarchy "sensorsignal:senal" File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 54
+Warning (10230): Verilog HDL assignment warning at sensorsignal.v(72): truncated value with size 32 to match size of target (30) File: /home/gualteros/Documentos/U/Digital_I/FINAL/sensorsignal.v Line: 72
+Warning (10230): Verilog HDL assignment warning at sensorsignal.v(88): truncated value with size 32 to match size of target (30) File: /home/gualteros/Documentos/U/Digital_I/FINAL/sensorsignal.v Line: 88
+Warning (10230): Verilog HDL assignment warning at sensorsignal.v(103): truncated value with size 32 to match size of target (30) File: /home/gualteros/Documentos/U/Digital_I/FINAL/sensorsignal.v Line: 103
+Warning (10230): Verilog HDL assignment warning at sensorsignal.v(113): truncated value with size 32 to match size of target (30) File: /home/gualteros/Documentos/U/Digital_I/FINAL/sensorsignal.v Line: 113
+Warning (10034): Output port "T" at sensorsignal.v(20) has no driver File: /home/gualteros/Documentos/U/Digital_I/FINAL/sensorsignal.v Line: 20
+Warning (12125): Using design file light.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: light File: /home/gualteros/Documentos/U/Digital_I/FINAL/light.v Line: 1
+Info (12128): Elaborating entity "light" for hierarchy "sensorsignal:senal|light:luz" File: /home/gualteros/Documentos/U/Digital_I/FINAL/sensorsignal.v Line: 43
+Warning (12125): Using design file sonido.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: sonido File: /home/gualteros/Documentos/U/Digital_I/FINAL/sonido.v Line: 1
+Info (12128): Elaborating entity "sonido" for hierarchy "sensorsignal:senal|sonido:ultra" File: /home/gualteros/Documentos/U/Digital_I/FINAL/sensorsignal.v Line: 51
+Warning (10230): Verilog HDL assignment warning at sonido.v(27): truncated value with size 32 to match size of target (10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/sonido.v Line: 27
+Warning (10230): Verilog HDL assignment warning at sonido.v(28): truncated value with size 32 to match size of target (10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/sonido.v Line: 28
+Warning (10230): Verilog HDL assignment warning at sonido.v(29): truncated value with size 32 to match size of target (22) File: /home/gualteros/Documentos/U/Digital_I/FINAL/sonido.v Line: 29
+Warning (12125): Using design file dht.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: dht File: /home/gualteros/Documentos/U/Digital_I/FINAL/dht.v Line: 1
+Info (12128): Elaborating entity "dht" for hierarchy "sensorsignal:senal|dht:dht11" File: /home/gualteros/Documentos/U/Digital_I/FINAL/sensorsignal.v Line: 59
+Warning (10230): Verilog HDL assignment warning at dht.v(128): truncated value with size 32 to match size of target (6) File: /home/gualteros/Documentos/U/Digital_I/FINAL/dht.v Line: 128
+Warning (12125): Using design file Humedad.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: Humedad File: /home/gualteros/Documentos/U/Digital_I/FINAL/Humedad.v Line: 1
+Info (12128): Elaborating entity "Humedad" for hierarchy "sensorsignal:senal|Humedad:humm" File: /home/gualteros/Documentos/U/Digital_I/FINAL/sensorsignal.v Line: 66
+Warning (12125): Using design file display_controller.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: display_controller File: /home/gualteros/Documentos/U/Digital_I/FINAL/display_controller.v Line: 1
+Info (12128): Elaborating entity "display_controller" for hierarchy "display_controller:display_ctrl" File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 76
+Warning (10230): Verilog HDL assignment warning at display_controller.v(37): truncated value with size 32 to match size of target (3) File: /home/gualteros/Documentos/U/Digital_I/FINAL/display_controller.v Line: 37
+Warning (10272): Verilog HDL Case Statement warning at display_controller.v(176): case item expression covers a value already covered by a previous case item File: /home/gualteros/Documentos/U/Digital_I/FINAL/display_controller.v Line: 176
+Warning (12125): Using design file bcd_to_7seg.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: bcd_to_7seg File: /home/gualteros/Documentos/U/Digital_I/FINAL/bcd_to_7seg.v Line: 1
+Info (12128): Elaborating entity "bcd_to_7seg" for hierarchy "display_controller:display_ctrl|bcd_to_7seg:bcd0" File: /home/gualteros/Documentos/U/Digital_I/FINAL/display_controller.v Line: 18
+Warning (12125): Using design file lcd_controller.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: lcd_controller File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 4
+Info (12128): Elaborating entity "lcd_controller" for hierarchy "lcd_controller:disgato" File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 95
+Warning (10036): Verilog HDL or VHDL warning at lcd_controller.v(40): object "current" assigned a value but never read File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 40
+Warning (10230): Verilog HDL assignment warning at lcd_controller.v(72): truncated value with size 32 to match size of target (23) File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 72
+Info (10264): Verilog HDL Case Statement information at lcd_controller.v(120): all case item expressions in this case statement are onehot File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 120
+Warning (10027): Verilog HDL or VHDL warning at the lcd_controller.v(141): index expression is not wide enough to address all of the elements in the array File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 141
+Warning (10230): Verilog HDL assignment warning at lcd_controller.v(204): truncated value with size 32 to match size of target (8) File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 204
+Warning (10230): Verilog HDL assignment warning at lcd_controller.v(205): truncated value with size 32 to match size of target (8) File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 205
+Warning (10230): Verilog HDL assignment warning at lcd_controller.v(206): truncated value with size 32 to match size of target (8) File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 206
+Warning (10230): Verilog HDL assignment warning at lcd_controller.v(207): truncated value with size 32 to match size of target (8) File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 207
+Warning (10230): Verilog HDL assignment warning at lcd_controller.v(293): truncated value with size 64 to match size of target (8) File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 293
+Warning (10230): Verilog HDL assignment warning at lcd_controller.v(294): truncated value with size 32 to match size of target (6) File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 294
+Warning (10230): Verilog HDL assignment warning at lcd_controller.v(296): truncated value with size 64 to match size of target (8) File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 296
+Warning (10230): Verilog HDL assignment warning at lcd_controller.v(298): truncated value with size 32 to match size of target (6) File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 298
+Warning (10230): Verilog HDL assignment warning at lcd_controller.v(305): truncated value with size 32 to match size of target (8) File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 305
+Info (10264): Verilog HDL Case Statement information at lcd_controller.v(319): all case item expressions in this case statement are onehot File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 319
+Warning (12125): Using design file estado.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: estado File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 4
+Info (12128): Elaborating entity "estado" for hierarchy "lcd_controller:disgato|estado:estado_one" File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 65
+Warning (10270): Verilog HDL Case Statement warning at estado.v(10): incomplete case statement has no default case item File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Warning (10240): Verilog HDL Always Construct warning at estado.v(10): inferring latch(es) for variable "char", which holds its previous value in one or more paths through the always construct File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[0]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[1]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[2]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[3]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[4]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[5]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[6]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[7]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[8]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[9]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[10]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[11]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[12]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[13]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[14]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[15]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[16]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[17]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[18]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[19]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[20]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[21]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[22]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[23]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[24]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[25]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[26]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[27]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[28]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[29]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[30]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[31]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[32]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[33]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[34]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[35]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[36]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[37]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[38]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[39]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[40]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[41]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[42]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[43]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[44]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[45]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[46]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[47]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[48]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[49]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[50]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[51]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[52]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[53]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[54]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[55]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[56]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[57]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[58]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[59]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[60]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[61]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[62]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (10041): Inferred latch for "char[63]" at estado.v(10) File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Info (278001): Inferred 7 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "lcd_controller:disgato|Mod1" File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 205
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "lcd_controller:disgato|Div0" File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 204
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "lcd_controller:disgato|Mod0" File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 204
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "lcd_controller:disgato|Mod3" File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 207
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "lcd_controller:disgato|Div1" File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 206
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "lcd_controller:disgato|Mod2" File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 206
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "sensorsignal:senal|sonido:ultra|Div0" File: /home/gualteros/Documentos/U/Digital_I/FINAL/sonido.v Line: 41
+Info (12130): Elaborated megafunction instantiation "lcd_controller:disgato|lpm_divide:Mod1" File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 205
+Info (12133): Instantiated megafunction "lcd_controller:disgato|lpm_divide:Mod1" with the following parameter: File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 205
+    Info (12134): Parameter "LPM_WIDTHN" = "8"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_m9m.tdf
+    Info (12023): Found entity 1: lpm_divide_m9m File: /home/gualteros/Documentos/U/Digital_I/FINAL/db/lpm_divide_m9m.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_bkh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_bkh File: /home/gualteros/Documentos/U/Digital_I/FINAL/db/sign_div_unsign_bkh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_a4f.tdf
+    Info (12023): Found entity 1: alt_u_div_a4f File: /home/gualteros/Documentos/U/Digital_I/FINAL/db/alt_u_div_a4f.tdf Line: 27
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_7pc.tdf
+    Info (12023): Found entity 1: add_sub_7pc File: /home/gualteros/Documentos/U/Digital_I/FINAL/db/add_sub_7pc.tdf Line: 23
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
+    Info (12023): Found entity 1: add_sub_8pc File: /home/gualteros/Documentos/U/Digital_I/FINAL/db/add_sub_8pc.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "lcd_controller:disgato|lpm_divide:Div0" File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 204
+Info (12133): Instantiated megafunction "lcd_controller:disgato|lpm_divide:Div0" with the following parameter: File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 204
+    Info (12134): Parameter "LPM_WIDTHN" = "8"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_jhm.tdf
+    Info (12023): Found entity 1: lpm_divide_jhm File: /home/gualteros/Documentos/U/Digital_I/FINAL/db/lpm_divide_jhm.tdf Line: 25
+Info (12130): Elaborated megafunction instantiation "sensorsignal:senal|sonido:ultra|lpm_divide:Div0" File: /home/gualteros/Documentos/U/Digital_I/FINAL/sonido.v Line: 41
+Info (12133): Instantiated megafunction "sensorsignal:senal|sonido:ultra|lpm_divide:Div0" with the following parameter: File: /home/gualteros/Documentos/U/Digital_I/FINAL/sonido.v Line: 41
+    Info (12134): Parameter "LPM_WIDTHN" = "33"
+    Info (12134): Parameter "LPM_WIDTHD" = "6"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_3jm.tdf
+    Info (12023): Found entity 1: lpm_divide_3jm File: /home/gualteros/Documentos/U/Digital_I/FINAL/db/lpm_divide_3jm.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_rlh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_rlh File: /home/gualteros/Documentos/U/Digital_I/FINAL/db/sign_div_unsign_rlh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_a7f.tdf
+    Info (12023): Found entity 1: alt_u_div_a7f File: /home/gualteros/Documentos/U/Digital_I/FINAL/db/alt_u_div_a7f.tdf Line: 27
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (13025): Duplicate LATCH primitives merged into single LATCH primitive
+    Info (13026): Duplicate LATCH primitive "lcd_controller:disgato|estado:estado_one|char[36]" merged with LATCH primitive "lcd_controller:disgato|estado:estado_one|char[48]" File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Info (13026): Duplicate LATCH primitive "lcd_controller:disgato|estado:estado_one|char[52]" merged with LATCH primitive "lcd_controller:disgato|estado:estado_one|char[32]" File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[8] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[16] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[24] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[40] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[56] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[9] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[17] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[5] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[1] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[25] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[49] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[41] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[33] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[57] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[18] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[26] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[42] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[34] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[5] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[58] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[11] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[19] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[5] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[27] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[51] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[43] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[35] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[59] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[12] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[20] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[28] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[44] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13012): Latch lcd_controller:disgato|estado:estado_one|char[60] has unsafe behavior File: /home/gualteros/Documentos/U/Digital_I/FINAL/estado.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_controller:disgato|est[6] File: /home/gualteros/Documentos/U/Digital_I/FINAL/lcd_controller.v Line: 111
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "ledd" is stuck at GND File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 20
+    Warning (13410): Pin "rw" is stuck at GND File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 25
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 17 registers lost all their fanouts during netlist optimizations.
+Info (17016): Found the following redundant logic cells in design
+    Info (17048): Logic cell "lcd_controller:disgato|lpm_divide:Mod2|lpm_divide_m9m:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_a4f:divider|add_sub_6_result_int[0]~10" File: /home/gualteros/Documentos/U/Digital_I/FINAL/db/alt_u_div_a4f.tdf Line: 57
+Info (144001): Generated suppressed messages file /home/gualteros/Documentos/U/Digital_I/FINAL/output_files/Maquinagpt.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "rstd" File: /home/gualteros/Documentos/U/Digital_I/FINAL/Maquinagpt.v Line: 21
+Info (21057): Implemented 2716 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 10 input pins
+    Info (21059): Implemented 28 output pins
+    Info (21060): Implemented 1 bidirectional pins
+    Info (21061): Implemented 2677 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 124 warnings
+    Info: Peak virtual memory: 454 megabytes
+    Info: Processing ended: Mon Sep 23 15:43:52 2024
+    Info: Elapsed time: 00:00:28
+    Info: Total CPU time (on all processors): 00:00:53
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in /home/gualteros/Documentos/U/Digital_I/FINAL/output_files/Maquinagpt.map.smsg.
+
+

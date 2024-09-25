@@ -1,0 +1,342 @@
+`timescale 1ns / 1ps
+
+// #(parameter COUNT_MAX = 800000)(
+module lcd_controller(
+	input clk,
+	output rs, ena, rw,
+	output [7:0] dat,
+	input reset,
+	// Si agrego el parametro aqui si se piede modificar
+	input luz,				//Sensor de luz ON/OFF
+	input hum,				//Sensor de humedad ON/OFF
+	input dis,				//Sensor de ultrasonido ON/OFF
+	input [7:0] aju_h,	//Sensor de humedad Decimal
+	input [7:0] aju_t,	//Sensor de temperatura Decimal
+	//output reg [3:0] dista,			//Sensor ultrasonido ON/OFF
+	//input aju_d,			//Sensor de ultrasonido Decimal
+	//input ice,	//Acelerometro
+	input [2:0] Amistad,
+	input [2:0] Hambre,
+	input [2:0] Dormir,
+	input [2:0] estado				//Estado actual
+);
+	
+	// Definición de estados
+   localparam INICIO = 4'd0,
+				  PERSO = 4'd1,
+              IMPRE = 4'd2,
+				  SENSOR = 4'd3,
+				  DIBUJO = 4'd4;
+	
+	parameter COUNT_MAX = 800000; // parametro definido externamente, se define el parametro dentro de lcd controler. NO SE PUEDE MODIFICAR
+	parameter MORE = 5000000;
+	// EL valor del parametro es una forma diferente de hacer un divisor de frecuencia
+	parameter INIT = 0;
+	//COnfiguracion para la pantalla
+	reg [7:0] data; 	//asociado a la salida dat
+	reg rs_reg;			//asociado a la salida rs -- Se usa para escribir
+	reg rw_reg;			//asociado a la salida rw  -- leer o escribir la pantalla (Se usa para escribir)
+	reg [$clog2(MORE)-1:0] counter; // Contador hasta 800000 - define automaticamente el tamaño del de bits del numero a definir TECHO de medidcion, por eso luego se resta uno [5:0]
+	reg [6:0] current, next; // Una forma MUY basica de una maquina de estados (Se usan para cambiar de estados)
+	reg clkr; // Es el resultado del segundo clock que generamos, el resultado del divisor de frecuencia.
+	
+	reg [7:0] array [79:0];
+	reg [5:0] cam;
+	
+	reg [$clog2(MORE)-1:0] tim;
+	
+	// Elementos personalizados
+
+	reg [5:0] cont;
+	reg [5:0] carac;
+	reg [7:0] est;
+	//reg [3:0] estado;
+	wire [63:0] char; // Matriz para almacenar el patrón del carácter
+	
+	// La maquina de estados son los CASES - Switch (C++)
+	reg [3:0] state;               // Estado del FSM
+	reg [7:0] action;               // Estado del FSM
+	
+// configurar matriz de salida
+	estado estado_one (
+        .clk(clk),
+		  .est(est),
+		  .char(char)
+    );
+	
+	always @(posedge clk) begin // Este es un flanco de subida (Tomar en cuetna flanco de bajada)
+		if(counter == tim - 1) begin
+			clkr <= ~clkr;
+			counter <= 0;
+		end else begin
+			counter = counter + 1;
+		end
+	end
+
+	initial begin // Una forma de definir un RESET que si hay que implementar
+		data = 0;
+		rs_reg = 0;
+		rw_reg = 0;
+		counter = 0;
+		current = 0;
+		next = 0;
+		clkr = 0;
+		cam = 0;
+		
+		{array[0],array[1],array[2],array[3],array[4],array[5],array[6],array[7],array[8],array[9],array[10],
+		array[11],array[12],array[13],array[14],array[15],array[16],array[17],array[18],array[19]} 
+		= {"L","u","z",":","-","-","-"," ","T","e","m",":","-","-","C",8'hDF,8'h00,8'h01,8'h02,8'h03};
+		{array[20],array[21],array[22],array[23],array[24],array[25],array[26],array[27],array[28],array[29],array[30],
+		array[31],array[32],array[33],array[34],array[35],array[36],array[37],array[38],array[39]} 
+		= {"H","u","m",":","-","-","-"," ","H","u","m",":","-","-","%"," ",8'h04,8'h05,8'h06,8'h07};
+		{array[40],array[41],array[42],array[43],array[44],array[45],array[46],array[47],array[48],array[49],array[50],
+		array[51],array[52],array[53],array[54],array[55],array[56],array[57],array[58],array[59]} 
+		= {"D","i","s",":","-","-","-"," ","A",":","-"," ","D",":","-"," ","(","w","w",")"};
+		{array[60],array[61],array[62],array[63],array[64],array[65],array[66],array[67],array[68],array[69],array[70],
+		array[71],array[72],array[73],array[74],array[75],array[76],array[77],array[78],array[79]} 
+		= {"F","r","i","o",":","-","-","-"," ","H",":","-"," ","c",8'hF3,8'hF3,8'hCA,8'hDB,8'hDB,8'hCA};
+		
+		tim = 150000;
+		state = INICIO;
+		carac = 0;
+		//estado = 1;
+	end
+	/*
+	always @(posedge tem) begin
+		estado <= tem;
+		//if (estado == 7 || reset == 0) begin estado <= 1; end
+		dista[3:0] <= estado;
+	end*/
+	
+	always @(posedge clkr) begin
+		if (reset == 0) begin
+			next <= 0;
+			est <= 0;
+			state <= INICIO;
+		end else begin
+			case(state)
+				INICIO: begin
+					rs_reg <= 0;
+					case (next)
+						 0: begin data <= 8'h01; next <= 1; tim <= 150000; end //150000
+						 1: begin data <= 8'h06; next <= 2; tim <= 3000; end //3000
+						 2: begin data <= 8'h0C; next <= 3; cont <= 0; end
+						 3: begin data <= 8'h10; next <= 4; est <= 0; end
+						 4: begin data <= 8'h38; carac <= 0; next <= 0; est = 0; state <= IMPRE; end
+					endcase
+				end
+				IMPRE: begin
+					if (next == 0) begin
+						 rs_reg <= 0;
+						 case(carac)
+							  6'd0: begin data <= 8'h80; end
+							  6'd1: begin data <= 8'hC0; end
+							  6'd2: begin data <= 8'h94; end
+							  6'd3: begin data <= 8'hD4; end
+						 endcase
+						 next <= 1;
+					end else begin
+						 rs_reg <= 1;
+						 case(carac)
+							  0: begin data <= array[cam]; end
+							  1: begin data <= array[20 + cam]; end
+							  2: begin data <= array[40 + cam]; end
+							  3: begin data <= array[60 + cam]; end
+						 endcase
+						 cam <= cam + 6'd1;
+						 if (cam == 6'd19) begin
+							  carac <= carac + 6'd1;
+							  cam <= 0;
+							  next <= 0;
+							  if (carac == 6'd3) begin // La suma no se realiza inmediata, por lo que la asignacion de carac continua has el final
+									carac <= 0;
+									state <= SENSOR;
+							  end
+						 end
+					end			  
+				end
+				SENSOR: begin
+					case (next)
+						// Sensor de Luz
+						0: begin
+							if (luz == 1'b0) begin
+								 {array[4],array[5],array[6]} <= {"O","N"," "};
+							end else begin
+								 {array[4],array[5],array[6]} <= {"O","F","F"};
+							end
+							rs_reg <= 0;
+							data <= 8'h84;
+							next <= 1;
+						end
+						1: begin rs_reg <= 1; data <= array[4]; next <= 2; end
+						2: begin rs_reg <= 1; data <= array[5]; next <= 3; end
+						3: begin rs_reg <= 1; data <= array[6]; next <= 4; end
+						// Sensor de humedad
+						4: begin
+							if (hum == 1'b0) begin
+								 {array[24],array[25],array[26]} <= {"O","N"," "};
+							end else begin
+								 {array[24],array[25],array[26]} <= {"O","F","F"};
+							end
+							rs_reg <= 0;
+							data <= 8'hC4;
+							next <= 5;
+						end
+						5: begin rs_reg <= 1; data <= array[24]; next <= 6; end
+						6: begin rs_reg <= 1; data <= array[25]; next <= 7; end
+						7: begin rs_reg <= 1; data <= array[26]; next <= 8; end
+						// Sensor de Ultrasonido
+						8: begin
+							if (dis == 1'b0) begin
+								 {array[44],array[45],array[46]} <= {"O","N"," "};
+							end else begin
+								 {array[44],array[45],array[46]} <= {"O","F","F"};
+							end
+							rs_reg <= 0;
+							data <= 8'h98;
+							next <= 9;
+						end
+						9: begin rs_reg <= 1; data <= array[44]; next <= 10; end
+						10: begin rs_reg <= 1; data <= array[45]; next <= 11; end
+						11: begin rs_reg <= 1; data <= array[46]; next <= 12; end
+						// Sensor de Temperatura - Humedad
+						12: begin
+							 array[32] <= ((aju_h / 10) % 10) + 8'b00110000; // 1
+							 array[33] <= (aju_h % 10) + 8'b00110000; // 2
+							 array[12] <= ((aju_t / 10) % 10) + 8'b00110000; // 1
+							 array[13] <= (aju_t % 10) + 8'b00110000; // 2
+							 rs_reg <= 0;
+							 data <= 8'h8C;
+							 next <= 13;
+						end
+						13: begin rs_reg <= 1; data <= array[12]; next <= 14; end
+						14: begin rs_reg <= 1; data <= array[13]; next <= 15; end
+						15: begin rs_reg <= 0; data <= 8'hCC; next <= 16; end
+						16: begin rs_reg <= 1; data <= array[32]; next <= 17; end
+						17: begin rs_reg <= 1; data <= array[33]; next <= 18; end
+						18: begin
+							 if (aju_t < 12) begin
+								 {array[65],array[66],array[67]} <= {"L","O","W"};
+							end else begin
+								 {array[65],array[66],array[67]} <= {"O","K"," "};
+							end
+							rs_reg <= 0;
+							data <= 8'hD9;
+							next <= 19;
+							end
+						19: begin rs_reg <= 1; data <= array[65]; next <= 20; end
+						20: begin rs_reg <= 1; data <= array[66]; next <= 21; end
+						21: begin rs_reg <= 1; data <= array[67]; next <= 22; end
+						22: begin rs_reg <= 1; data <= array[68];
+							case(estado)
+								1: begin est <= 0; end
+								2: begin est <= 8; end
+								3: begin est <= 16; end
+								4: begin est <= 24; end
+								5: begin est <= 32; end
+								6: begin est <= 40; end
+								default: est = 23;
+							endcase
+							next <= 23;
+						end
+						23: begin
+							rs_reg <= 0;
+							array[50] <= Amistad + 8'b00110000;
+							data <= 8'h9E;
+							next <= 24;
+						end
+						24: begin rs_reg <= 1; data <= array[50]; next <= 25; end
+						25: begin
+							rs_reg <= 0;
+							array[54] <= Dormir + 8'b00110000;
+							data <= 8'hA2;
+							next <= 26;
+						end
+						26: begin rs_reg <= 1; data <= array[54]; next <= 27; end
+						27: begin
+							rs_reg <= 0;
+							array[71] <= Hambre + 8'b00110000;
+							data <= 8'hDF;
+							next <= 28;
+						end
+						28: begin rs_reg <= 1; data <= array[71]; next <= 0; state <= PERSO; end
+					endcase
+				end			  
+				PERSO: begin
+					if (next == 0) begin
+						 rs_reg <= 0;
+						 case(carac)
+							  6'd0: begin data <= 8'h40; end
+							  6'd1: begin data <= 8'h48; end
+							  6'd2: begin data <= 8'h50; end
+							  6'd3: begin data <= 8'h58; end
+							  6'd4: begin data <= 8'h60; end
+							  6'd5: begin data <= 8'h68; end
+							  6'd6: begin data <= 8'h70; end
+							  6'd7: begin data <= 8'h78; end
+						 endcase
+						 /*
+						 case(est)
+							0: begin {array[53],array[54],array[57],array[58],array[73],array[74],array[75]} = {"c",8'hF3,"w","w"," ",8'hF3,8'hF3}; end
+							8: begin {array[53],array[54],array[57],array[58],array[73],array[74],array[75]} = {" "," ",8'hEF,8'hEF,"c",8'hF3,8'hF3}; end
+							16: begin {array[53],array[54],array[57],array[58],array[73],array[74],array[75]} = {" "," ","w","w","c",8'hF3,8'hF3}; end
+							24: begin {array[53],array[54],array[57],array[58],array[73],array[74],array[75]} = {" "," ","w","w","c",8'hF3,8'hF3}; end
+							32: begin {array[53],array[54],array[57],array[58],array[73],array[74],array[75]} = {" "," ","w","w","c",8'hF3,8'hF3}; end
+							40: begin {array[53],array[54],array[57],array[58],array[73],array[74],array[75]} = {" "," ","w","w","c",8'hF3,8'hF3}; end
+							default: {array[53],array[54],array[57],array[58],array[73],array[74],array[75]} = {" "," ","w","w","c",8'hF3,8'hF3};
+						 endcase
+						 */
+						 next <= 1;
+					end else begin
+						 rs_reg <= 1; // RS = 1 para enviar datos (patrón)
+						 if(cont < 7) begin
+							  data <= char >> (cont * 8); // Enviar cada fila del patrón
+							  cont <= cont + 1;
+						 end else begin
+							  data <= char >> (cont * 8); // Enviar cada fila del patrón
+							  cont <= 0; // Volver al estado inicial
+							  carac <= carac + 1; // carac no cambia instantaneamente
+							  next <= 0;
+							  if (carac == 7) begin
+									carac <= 0;
+									state <= DIBUJO;
+									//est <= 0;
+							  end else begin
+									est <= est + 1; // el valor de evaluacion de carac si cambia, pero carac como tal no
+							  end
+						 end
+					end
+				end
+				/*
+				feliz 1
+				neturo 2
+				hambrieto 3
+				descanso 4
+				muerto 5
+				amistad 6
+				*/
+				DIBUJO: begin
+					case (next)
+						// Sensor de Luz
+						0: begin rs_reg <= 0; data <= 8'h90; next <= 1; end
+						1: begin rs_reg <= 1; data <= array[16]; next <= 2; end
+						2: begin rs_reg <= 1; data <= array[17]; next <= 3; end
+						3: begin rs_reg <= 1; data <= array[18]; next <= 4; end
+						4: begin rs_reg <= 1; data <= array[19]; next <= 5; end
+						5: begin rs_reg <= 0; data <= 8'hD0; next <= 6; end
+						6: begin rs_reg <= 1; data <= array[36]; next <= 7; end
+						7: begin rs_reg <= 1; data <= array[37]; next <= 8; end
+						8: begin rs_reg <= 1; data <= array[38]; next <= 9; end
+						9: begin rs_reg <= 1; data <= array[39]; next <= 0; state <= SENSOR; end
+					endcase
+				end
+				default: next = INIT;
+			endcase
+		end
+	end
+	assign ena = clkr;
+	assign rw = rw_reg;
+	assign rs = rs_reg;
+	assign dat = data;
+
+endmodule

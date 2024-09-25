@@ -1,0 +1,153 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "trig",
+					"strict" : false
+				},
+				{
+					"name" : "sseg[0]",
+					"strict" : false
+				},
+				{
+					"name" : "sseg[1]",
+					"strict" : false
+				},
+				{
+					"name" : "sseg[2]",
+					"strict" : false
+				},
+				{
+					"name" : "sseg[3]",
+					"strict" : false
+				},
+				{
+					"name" : "sseg[4]",
+					"strict" : false
+				},
+				{
+					"name" : "sseg[5]",
+					"strict" : false
+				},
+				{
+					"name" : "sseg[6]",
+					"strict" : false
+				},
+				{
+					"name" : "an[0]",
+					"strict" : false
+				},
+				{
+					"name" : "an[1]",
+					"strict" : false
+				},
+				{
+					"name" : "an[2]",
+					"strict" : false
+				},
+				{
+					"name" : "an[3]",
+					"strict" : false
+				},
+				{
+					"name" : "an[4]",
+					"strict" : false
+				},
+				{
+					"name" : "an[5]",
+					"strict" : false
+				},
+				{
+					"name" : "an[6]",
+					"strict" : false
+				},
+				{
+					"name" : "an[7]",
+					"strict" : false
+				},
+				{
+					"name" : "rs",
+					"strict" : false
+				},
+				{
+					"name" : "ena",
+					"strict" : false
+				},
+				{
+					"name" : "dat[0]",
+					"strict" : false
+				},
+				{
+					"name" : "dat[1]",
+					"strict" : false
+				},
+				{
+					"name" : "dat[2]",
+					"strict" : false
+				},
+				{
+					"name" : "dat[3]",
+					"strict" : false
+				},
+				{
+					"name" : "dat[4]",
+					"strict" : false
+				},
+				{
+					"name" : "dat[5]",
+					"strict" : false
+				},
+				{
+					"name" : "dat[6]",
+					"strict" : false
+				},
+				{
+					"name" : "dat[7]",
+					"strict" : false
+				},
+				{
+					"name" : "dht11",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "intest",
+					"strict" : false
+				},
+				{
+					"name" : "MJ",
+					"strict" : false
+				},
+				{
+					"name" : "test",
+					"strict" : false
+				},
+				{
+					"name" : "reset",
+					"strict" : false
+				},
+				{
+					"name" : "sensor",
+					"strict" : false
+				},
+				{
+					"name" : "inhum",
+					"strict" : false
+				},
+				{
+					"name" : "meal",
+					"strict" : false
+				},
+				{
+					"name" : "echo",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
