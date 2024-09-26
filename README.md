@@ -323,3 +323,6 @@ La condición de juegos inicia, cuando se activa el modo juego, esta condicón p
 <img src="./Imagenes/amistad.jpg" alt=imagen" width="600px">
 </p>
 </div>
+
+# Video funcionamiento
+[Funcionamiento](https://drive.google.com/drive/folders/1y_hMLZ5h55ZH5bJksfYLBvOqA7WoOdaq)
